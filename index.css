@@ -50,5 +50,7 @@ a.home {
     border-style: none;
     background: rgb(98, 190, 105);
     margin-bottom: 0;
-
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
 }
