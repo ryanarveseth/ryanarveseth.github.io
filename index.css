@@ -46,3 +46,9 @@ a:hover {
     color: white;
     transition: .2s;
 }
+button.home { 
+    border-style: none;
+    border-radius: 5px;
+    background: rgb(98, 190, 105);
+
+}
