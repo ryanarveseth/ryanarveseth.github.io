@@ -24,10 +24,12 @@ th {
     color: white;
 }
 .complete {
-    color: black;
+    text-align: center;
+    color: rgb(0,150,0);
     content: "&#10004";
 }
 .incomplete {
-    color: black;
+    text-align: center;
+    color: rgb(200,0,0);
     content: "&#10006";
 }
