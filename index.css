@@ -16,6 +16,6 @@ th {
     font-weight: bolder;
 }
 tr:hover {
-    transition: .3s;
+    transition: .1s;
     background-color: #f0f0f0;
 }
