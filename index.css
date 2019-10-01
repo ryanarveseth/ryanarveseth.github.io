@@ -1,7 +1,10 @@
 body {
     font-family: 'Courier New', Courier, monospace;
 }
-
+table {
+    border-collapse: collapse;
+    margin: 0 auto;
+}
 th, td {
     font-size: 12px;
     padding: 8px;
@@ -9,5 +12,6 @@ th, td {
     border-bottom: 1px solid #ddd;
 }
 tr:hover {
-    background-color: #f0f0f0
+    transition: .3s;
+    background-color: #f0f0f0;
 }
