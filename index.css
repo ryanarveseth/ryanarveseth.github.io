@@ -24,8 +24,10 @@ th {
     color: white;
 }
 .complete {
+    color: black;
     content: "\2713";
 }
 .incomplete {
-    content: "\2716"
+    color: black;
+    content: "\2716";
 }
