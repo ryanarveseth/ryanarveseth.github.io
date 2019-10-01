@@ -28,11 +28,11 @@
         xmlhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
             var myObj = JSON.parse(this.responseText);
-            txt = "<table class='jsonTable'><tr><th>City</th><th>2010 Population</th><th>2020 Projection</th></tr>"
+            txt = "<table class='jsonTable'><tr><th>City</th><th>2010 Population</th><th>2020 Projection</th></tr>";
             for (x = 0; x < myObj.length; x++) {
-                txt += "<tr><td>" + myObj[x].geography + "</td><td>" + myObj[x]._2010_census + "</td><td>" + myObj[x]._2020_projections + "</td></tr>"
+                txt += "<tr><td>" + myObj[x].geography + "</td><td>" + myObj[x]._2010_census + "</td><td>" + myObj[x]._2020_projections + "</td></tr>";
             }
-            txt += "</table>"
+            txt += "</table>";
             document.getElementById("demo").innerHTML = txt;
           }
         };
