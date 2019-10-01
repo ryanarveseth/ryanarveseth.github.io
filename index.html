@@ -4,7 +4,7 @@
     <title>Ryan Arveseth's CIT 261 Projects</title>
     <link rel="stylesheet" type="text/css" href="index.css">
 </head>
-<body>
+<body onload="getSymbols();">
 <h1>CIT 261 Basic Fluency Projects</h1>
 <table class="codeTopics">
     <tr><th>Status</th><th>Topic</th><th>Description</th><th>Action</th></tr>
@@ -88,4 +88,19 @@
     </tr>
 </table>
 </body>
+<script>
+
+function getSymbols() {
+    var incomplete = document.getElementsByClassName('incomplete');
+    var complete = document.getElementsByClassName('complete');
+    // Replace all of the incomplete items
+    [].slice.call(incomplete).forEach(function (incomplete) {
+        incomplete.innerHTML = "&#10006";
+    });
+    // Replace all of the complete items
+    [].slice.call(complete).forEach(function (complete) {
+        complete.innerHTML = "&#10004";
+    });
+}
+</script>
 </html>
