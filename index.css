@@ -19,3 +19,13 @@ tr:hover {
     transition: .1s;
     background-color: #f0f0f0;
 }
+th { 
+    background: rgb(50, 100, 255);
+    color: white;
+}
+.complete {
+    content: "\2713";
+}
+.incomplete {
+    content: "\2716"
+}
