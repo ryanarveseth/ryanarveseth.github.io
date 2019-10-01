@@ -33,3 +33,14 @@ th {
     color: rgb(200,0,0);
     content: "&#10006";
 }
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+a:hover {
+    background: #ddd;
+    transition: .2s;
+}
