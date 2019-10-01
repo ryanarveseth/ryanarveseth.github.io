@@ -25,9 +25,9 @@ th {
 }
 .complete {
     color: black;
-    content: "\2713";
+    content: "&#10004";
 }
 .incomplete {
     color: black;
-    content: "\2716";
+    content: "&#10006";
 }
