@@ -38,9 +38,9 @@ a {
     color: black;
     font-weight: bold;
     padding: 5px;
-    border: 1px solid #ddd;
+    border: 1px solid #777;
 }
 a:hover {
-    background: #ddd;
+    background: #777;
     transition: .2s;
 }
