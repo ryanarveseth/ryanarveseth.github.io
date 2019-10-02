@@ -14,12 +14,32 @@
     <script>
         var xmlhttp = new XMLHttpRequest();
         var txt = "";
+        var jExplain = " \
+            <table style='width:100%;'> \
+                <tr><th>JSON.parse(str)</th></tr>\
+                <tr><td>\
+                    <ul>\
+                        <li>Receives Data as a string and changes it into an object (or an array of objects)</li>\
+                        <li>If you have an array of objects, you can loop through it, as seen in the picture on the right.</li>\
+                        <li>When you know the object member names, you can get them directly from the object</li>\
+                            <ul>\
+                                <li>geography</li>\
+                                <li>_2010_census</li>\
+                                <li>_2020_projections</li>\
+                                <li>_2030_projections</li>\
+                                <li>_2040_projections</li>\
+                                <li>_2050_projections</li>\
+                                <li>_2060_projections</li>\
+                            </ul>\
+                    </ul\
+                </td></tr>\
+            </table>";
         xmlhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
             // JSON.parse returns a JSON Object
             var myObj = JSON.parse(this.responseText);
             
-            txt = "<table class='jsonTable'><tr><th colspan='7'>JSON.parse(txt), JSON.stringify(obj)</th></tr> \
+            txt = "<table class='jsonTable'><tr><th colspan='7'>JSON.parse(str), JSON.stringify(obj)</th></tr> \
                     <tr><td colspan='3'></td><td colspan='4'><img src='json-parse-stringify.PNG' \
                     style='max-width:650px;' alt='json methods'></td></tr> \
                     <tr><td colspan='7' style='text-align:center;'><a href='https://opendata.utah.gov/resource/rnsc-wamv.json'>Go To JSON Source</a></td></tr> \
