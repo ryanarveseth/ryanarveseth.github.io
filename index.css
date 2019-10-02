@@ -1,6 +1,9 @@
 body {
     font-family: 'Courier New', Courier, monospace;
 }
+h1 {
+    text-align: center;
+}
 table {
     border-collapse: collapse;
     margin: 0 auto;
