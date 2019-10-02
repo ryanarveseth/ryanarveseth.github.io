@@ -16,12 +16,13 @@
         var txt = "";
         var jExplain = " \
             <table style='width:100%;'> \
-                <tr><th>JSON.parse(str)</th></tr>\
+                <tr><th style='background:rgb(50,50,50);'>JSON.parse(string)</th></tr>\
                 <tr><td>\
                     <ul>\
-                        <li>Receives Data as a string and changes it into an object (or an array of objects)</li>\
+                        <li>Receives Data as a string and changes it into an object (or an array of objects).</li>\
                         <li>If you have an array of objects, you can loop through it, as seen in the picture on the right.</li>\
-                        <li>When you know the object member names, you can get them directly from the object</li>\
+                        <li>When you know the object member names, you can get them directly from the object.</li>\
+                        <li>In this case, the members are:</li>\
                             <ul>\
                                 <li>geography</li>\
                                 <li>_2010_census</li>\
@@ -30,6 +31,19 @@
                                 <li>_2040_projections</li>\
                                 <li>_2050_projections</li>\
                                 <li>_2060_projections</li>\
+                            </ul>\
+                    </ul\
+                </td></tr>\
+            </table>\
+            <table style='width:100%;'> \
+                <tr><th style='background:rgb(50,50,50);'>JSON.stringify(object)</th></tr>\
+                <tr><td>\
+                    <ul>\
+                        <li>Receives Data as an object and changes it into a JSON formatted string.</li>\
+                        <li>Date objects are not allowed. JSON.stringify() will convert dates to strings.</li>\
+                        <li>Functions are also not allowed as objects - so number: function () { return 5; } won't work. It will be ignored</li>\
+                        <ul>\
+                                <li>(Unless you convert the function to a string first!)</li>\
                             </ul>\
                     </ul\
                 </td></tr>\
