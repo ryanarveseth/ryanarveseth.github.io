@@ -65,37 +65,36 @@
                 <tr>
                     <td>
                         <ul>
-                            <li>Types of JavaScript Loops</li>
+                            <li>Types of JavaScript Conditions</li>
                             <ul>
-                                <li>for</li>
+                                <li>if</li>
                                 <ul>
-                                    <li>Loops for a set number of times until it reaches the 'go until' point.</li>
-                                    <li>Syntax: for (start; go until; increment by)</li>
-                                    <li>Example: for (i = 0; i < 10; i++)</li>
+                                    <li>Checks a condition and runs code IF the condition evaluates to true.</li>
+                                    <li>Syntax: if (condition) { }</li>
+                                    <li>Example: if (isHungry) { eat(); }</li>
                                 </ul>
-                                <li>for/in</li>
+                                <li>else</li>
                                 <ul>
-                                    <li>Loops over each item in an object.</li>
-                                    <li>Syntax: for (variable in object)</li>
-                                    <li>Example: for (i in names)</li>
+                                    <li>Goes after an if statement and runs code if the condition evaluates to false</li>
+                                    <li>Syntax: else { } </li>
+                                    <li>Example: else { dontEat(); }</li>
                                 </ul>
-                                <li>for/of</li>
+                                <li>else if</li>
                                 <ul>
-                                    <li>Loops over iterable data structures like Strings, Maps, NodeLists, Arrays</li>
-                                    <li>Syntax: for (variable of iterable item)</li>
-                                    <li>Example: for (i in names)</li>
+                                    <li>Goes after an if statement and runs code if the new condition evaluates to true<br>(and the previous condition evaluates to false)</li>
+                                    <li>Syntax: else if (condition) { }</li>
+                                    <li>Example: else if (isHangry) { beHangry(); }</li>
                                 </ul>
-                                <li>while</li>
+                                <li>switch</li>
                                 <ul>
                                     <li>Loops while a condition evaluates to true (the condition is checked BEFORE the loop begins)</li>
-                                    <li>Syntax: while (condition)</li>
-                                    <li>Example: while (amAwesome)</li>
-                                </ul>
-                                <li>do/while</li>
-                                <ul>
-                                    <li>Runs the code, checks the condition status, then loops until the condition evaluates to false<br>(the condition is checked AFTER the loop begins)</li>
-                                    <li>Syntax:  do {...} while (condition);</li>
-                                    <li>Example: do {...} while (amAwesome);</li>
+                                    <li>Syntax: switch (expression)</li>
+                                    <ul>
+                                        <li>case (condition1):</li>
+                                        <li>case (condition2):</li>
+                                        <li>case (condition3):</li>
+                                    </ul>
+                                    <li>Example: switch (feelings)<br> case (happy):<br> case (sad):<br> case (hungry):<br> case (angry):</li>
                                 </ul>
                             </ul>
                         </ul>
