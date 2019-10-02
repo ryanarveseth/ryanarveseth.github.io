@@ -20,8 +20,17 @@
             txt = "<table class='jsonTable'><tr><th colspan='7' style='text-align:center;'>JSON.parse Method</th></tr><tr><th>City</th><th>2010 Population</th><th>2020 Projection</th><th>2030 Projection</th><th>2040 Projection</th><th>2050 Projection</th><th>2060 Projection</th></tr>";
             // Now we'll loop through the object and display it to the user
             for (x = 0; x < myObj.length; x++) {
-                txt += "<tr><td>" + myObj[x].geography + "</td><td>" + numberWithCommas(myObj[x]._2010_census) + "</td><td>" + numberWithCommas(myObj[x]._2020_projections) + "</td><td>" + numberWithCommas(myObj[x]._2030_projections) + "</td><td>" + numberWithCommas(myObj[x]._2040_projections) + "</td><td>" + numberWithCommas(myObj[x]._2050_projections) + "</td><td>" + numberWithCommas(myObj[x]._2060_projections) + "</td></tr>";
+                // I'd put all of this in one line, but this is much easier to read
+                txt += "<tr><td>" + myObj[x].geography + "</td>";
+                // Add 2010 census, then 2020-2060 projections
+                txt += "<td>" + numberWithCommas(myObj[x]._2010_census) + "</td>";
+                txt += "<td>" + numberWithCommas(myObj[x]._2020_projections) + "</td>";
+                txt += "<td>" + numberWithCommas(myObj[x]._2030_projections) + "</td>";
+                txt += "<td>" + numberWithCommas(myObj[x]._2040_projections) + "</td>";
+                txt += "<td>" + numberWithCommas(myObj[x]._2050_projections) + "</td>";
+                txt += "<td>" + numberWithCommas(myObj[x]._2060_projections) + "</td></tr>";
             }
+            // Don't forget to close off the table
             txt += "</table>";
             document.getElementById("parse").innerHTML = txt;
 
