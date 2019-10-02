@@ -22,7 +22,8 @@
             }
             txt += "</table>";
             document.getElementById("parse").innerHTML = txt;
-            document.getElementById("stringify").innerHTML = JSON.stringify(myObj);
+            txt = "<table><tr><th>JSON.stringify(obj) Method</th></tr><tr><td>" + JSON.stringify(myObj) + "</td></tr></table>";
+            document.getElementById("stringify").innerHTML = txt;
           }
         };
         xmlhttp.open("GET", "https://opendata.utah.gov/resource/rnsc-wamv.json", true);
