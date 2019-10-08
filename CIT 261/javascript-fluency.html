@@ -23,6 +23,12 @@
     background:rgb(25,25,50);
     color:white;
 }
+.eTable {
+    margin-right: 0px;
+    margin-left: auto;
+    width: 525px;
+}
+
 </style>
 <h1>Example of JavaScript</h1>
 <table class='jsonTable'><tr><th colspan='7'>JavaScript Syntax: Loops, Conditions, Functions, Variables, Parameters, Arrays, and Associative Arrays</th></tr> 
@@ -71,7 +77,7 @@
                         </ul>
                     </td>
                     <td>
-                        <table style="width:500px;">
+                        <table class="eTable">
                             <tr><th>Example of a Loop</th></tr><tr class="codeExample">
                                 <td>
                                     <div class="notes">// creates an empty array</div>
@@ -156,7 +162,7 @@
                         </ul>
                     </td>
                     <td>
-                        <table style="width:500px;">
+                        <table class="eTable">
                             <tr><th>Example of a Condition</th></tr><tr class="codeExample">
                                 <td>
                                     <div class="notes">// creates an empty array</div>
@@ -189,7 +195,7 @@
                                             document.getElementById("showCondition").innerHTML = arr;
                                             }
                                             else {
-                                                document.getElementById("showCondition").innerHTML = arr + "<br><br>I'm cutting you off at 20 items in the array... sorry";
+                                                document.getElementById("showCondition").innerHTML = arr + "<br><br>I'm cutting you off at 21 items in the array... sorry";
                                             }
                                             
                                         }
