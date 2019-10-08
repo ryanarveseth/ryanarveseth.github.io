@@ -92,17 +92,17 @@ tr.noSpace td {
                             <tr><th>Example of a Loop</th></tr><tr class="codeExample">
                                 <td>
                                     <div class="notes">// creates an empty array</div>
-                                    arr = [];<br>
+                                    arr1 = [];<br>
                                     function addToArray() {<br>
                                     <div class="tab">
                                         <div class="notes">// typical for-loop.<br>//It runs and adds 5 items to our array</div>
                                         <div class="highlight">for (let i = 0; i < 5; i++) {</div>
                                             <div class="tab">
-                                                arr.push(arr.length + 1);<br>
+                                                arr1.push(arr1.length + 1);<br>
                                             </div>
                                         <div class="highlight">}</div>
                                         <div class="notes">// now we'll display the array</div>
-                                        document.getElementById("showArray").innerHTML = arr;<br>
+                                        document.getElementById("showArray").innerHTML = arr1;<br>
                                     </div>
                                     }
                                     
@@ -110,15 +110,15 @@ tr.noSpace td {
                                     <button onclick="showArray();">Get Results of Loop</button><br><br><br>
                                     <div id="showArray"></div>
                                     <script> 
-                                        arr = [];
+                                        arr1 = [];
                                         function showArray() {
-                                            if (arr.length < 20) {
+                                            if (arr1.length < 20) {
                                             for (let i = 0; i < 5; i++)
-                                                arr.push(arr.length + 1);
-                                            document.getElementById("showArray").innerHTML = arr;
+                                                arr1.push(arr1.length + 1);
+                                            document.getElementById("showArray").innerHTML = arr1;
                                             }
                                             else {
-                                                document.getElementById("showArray").innerHTML = arr + "<br><br>I'm cutting it off at 20 items in the array... sorry";
+                                                document.getElementById("showArray").innerHTML = arr1 + "<br><br>I'm cutting it off at 20 items in the array... sorry";
                                             }
                                             
                                         }
@@ -177,7 +177,7 @@ tr.noSpace td {
                             <tr><th>Example of a Condition</th></tr><tr class="codeExample">
                                 <td>
                                     <div class="notes">// creates an empty array</div>
-                                    arr = [];<br>
+                                    arr2 = [];<br>
                                     function showCondition() {<br>
                                     <div class="tab">
                                         <div class="notes">// typical for-loop.<br>//It runs and adds 5 items to our array</div>
@@ -185,7 +185,7 @@ tr.noSpace td {
                                             <div class="tab">
                                                 <div class="notes">// if remainder of i / 2 = 0...</div>
                                                 <div class="highlight">if (i % 2 == 0)</div> 
-                                                <div class="tab">arr.push(arr.length + 1);</div>
+                                                <div class="tab">arr2.push(arr2.length + 1);</div>
                                             </div>
                                         }<br>
                                         <div class="notes">// now we'll display the array</div>
@@ -197,16 +197,16 @@ tr.noSpace td {
                                     <button onclick="showCondition();">Get Results of Conditions</button><br><br><br>
                                     <div id="showCondition"></div>
                                     <script> 
-                                        arr = [];
+                                        arr2 = [];
                                         function showCondition() {
-                                            if (arr.length < 20) {
+                                            if (arr2.length < 20) {
                                             for (let i = 0; i < 5; i++)
                                                 if (i % 2 == 0)
-                                                    arr.push(arr.length + 1);
-                                            document.getElementById("showCondition").innerHTML = arr;
+                                                    arr2.push(arr2.length + 1);
+                                            document.getElementById("showCondition").innerHTML = arr2;
                                             }
                                             else {
-                                                document.getElementById("showCondition").innerHTML = arr + "<br><br>I'm cutting it off at 21 items in the array... sorry";
+                                                document.getElementById("showCondition").innerHTML = arr2 + "<br><br>I'm cutting it off at 21 items in the array... sorry";
                                             }
                                             
                                         }
@@ -252,15 +252,15 @@ tr.noSpace td {
                                     <div class="highlight">function fib(n) {</div>
                                     <div class="tab">
                                         <div class="notes">// first 2 numbers in sequence are 0 & 1</div>
-                                        arr = [0, 1];<br>
+                                        arr3 = [0, 1];<br>
                                         for (let i = 2; i <= n; i++) {<br>
                                             <div class="tab">
                                                 <div class="notes">// add next num to the array</div>
-                                                <div class="tab">arr.push(arr[i-1] + arr[i-2]);</div>
+                                                <div class="tab">arr3.push(arr3[i-1] + arr3[i-2]);</div>
                                             </div>
                                         }<br>
                                         <div class="notes">// return result to whoever called the function</div>
-                                        return arr[n];
+                                        return arr3[n];
                                     </div>
                                     <div class="highlight">}</div>
                                     <br>
@@ -276,10 +276,10 @@ tr.noSpace td {
                                     <div id="fib"></div>
                                     <script> 
                                         function fib(n) {
-                                            arr = [0, 1];
+                                            arr3 = [0, 1];
                                             for (let i = 2; i <= n; i++)
-                                                arr.push(arr[i-1] + arr[i-2]);
-                                            return arr[n];
+                                                arr.push(arr3[i-1] + arr3[i-2]);
+                                            return arr3[n];
                                         }
 
                                         function getFib() {
