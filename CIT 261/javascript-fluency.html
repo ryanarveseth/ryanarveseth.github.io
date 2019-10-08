@@ -35,6 +35,10 @@ table.eTable {
 .highlight {
     color: rgb(255,255,0);
 }
+.noSpace {
+    padding: 0px;
+    margin: 0px;
+}
 </style>
 <h1>Example of JavaScript</h1>
 <table class='jsonTable'><tr><th colspan='7'>JavaScript Syntax: Loops, Conditions, Functions, Variables, Parameters, Arrays, and Associative Arrays</th></tr> 
@@ -387,10 +391,10 @@ table.eTable {
                                         </div>
                                     }<br><br><br>
                                     <table>
-                                        <tr><td>Person's Name:</td><td><input type="text" id="names" size="15" maxlength="15"></td></tr>
-                                        <tr><td>Car Make:</td><td><input type="text" id="make" size="15" maxlength="15"></td></tr>
-                                        <tr><td>Car Model:</td><td><input type="text" id="model" size="15" maxlength="15"></td></tr>
-                                        <tr><td colspan="2"><button onclick="addToArrays();">Add to Arrays</button></td></tr>
+                                        <tr class="codeExample noSpace"><td>Person's Name:</td><td><input type="text" id="names" size="15" maxlength="15"></td></tr>
+                                        <tr class="codeExample noSpace"><td>Car Make:</td><td><input type="text" id="make" size="15" maxlength="15"></td></tr>
+                                        <tr class="codeExample noSpace"><td>Car Model:</td><td><input type="text" id="model" size="15" maxlength="15"></td></tr>
+                                        <tr class="codeExample noSpace"><td colspan="2"><button onclick="addToArrays();">Add to Arrays</button></td></tr>
                                     </table>
                                     <div id="arrs"></div>
                                     <script>
