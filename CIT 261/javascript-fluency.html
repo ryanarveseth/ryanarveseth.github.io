@@ -386,10 +386,12 @@ table.eTable {
                                             document.getElementById("arrays").innerHTML = "...";<br>
                                         </div>
                                     }<br><br><br>
-                                    Person's Name: <input type="text" id="names" size="15" maxlength="15"><br>
-                                    Car Make: <input type="text" id="make" size="15" maxlength="15"><br>
-                                    Car Model: <input type="text" id="model" size="15" maxlength="15"><br>
-                                    <button onclick="addToArrays();">Add to Arrays</button><br><br>
+                                    <table>
+                                        <tr><td>Person's Name:</td><td><input type="text" id="names" size="15" maxlength="15"></td></tr>
+                                        <tr><td>Car Make:</td><td><input type="text" id="make" size="15" maxlength="15"></td></tr>
+                                        <tr><td>Car Model:</td><td><input type="text" id="model" size="15" maxlength="15"></td></tr>
+                                        <tr><td colspan="2"><button onclick="addToArrays();">Add to Arrays</button></td></tr>
+                                    </table>
                                     <div id="arrs"></div>
                                     <script>
                                         var car = [];
