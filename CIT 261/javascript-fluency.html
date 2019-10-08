@@ -364,7 +364,44 @@ table.eTable {
                             </ul>
                         </ul>
                     </td>
-                    <td></td>
+                    <td>
+                        <table class="eTable">
+                            <tr><th>Example of a Variable</th></tr><tr class="codeExample">
+                                <td>
+                                    <div class="notes">// Let's get an array!</div>
+                                    <div class="notes">// ...And an associative array!</div>
+                                    function addToArrays() {<br>
+                                        <div class="tab">
+                                            <div class="highlight">
+                                                var a = parseInt(document.getElementById("vari").value);<br>
+                                                let b = parseInt(document.getElementById("vari").value);<br>
+                                            </div>
+                                            {<br>
+                                            <div class="tab"><div class="highlight">var a = "changed!";<br>let b = "changed!";</div></div>
+                                            }<br>
+                                            document.getElementById("vars").innerHTML = "...";<br>
+                                        </div>
+                                    }<br><br><br>
+                                    Person's Name: <input type="text" id="names" size="15" maxlength="15">
+                                    Car Make: <input type="text" id="make" size="15" maxlength="15">
+                                    Car Model: <input type="text" id="model" size="15" maxlength="15">
+                                    <button onclick="getVariables();">Run Variable</button><br><br>
+                                    <div id="vars"></div>
+                                    <script> 
+                                        function getVariables() {
+                                            var a = parseInt(document.getElementById("vari").value);
+                                            let b = parseInt(document.getElementById("vari").value);
+                                            { 
+                                                var a = "changed!";
+                                                let b = "changed!";
+                                            }
+                                            document.getElementById("vars").innerHTML = "a value after { ... }: " + a + "<br>b value after { ... }: " + b;
+                                        }
+                                    </script>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
                 </tr>
             </table>
         </td>   
