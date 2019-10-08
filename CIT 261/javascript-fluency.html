@@ -70,7 +70,7 @@
                             <div class="notes">// here's our for-loop. It runs 5 times, and adds to our array</div>
                             for (let i = 0; i < 5; i++) {<br>
                                 <div class="tab">
-                                    arr.push(i);<br>
+                                    arr.push(i + 1);<br>
                                 </div>
                             }<br>
                             <div class="notes">// now we'll display the array</div>
@@ -87,8 +87,12 @@
                                 if (arr.length < 20) {
                                 for (let i = 0; i < 5; i++)
                                     arr.push(arr.length + 1);
-                                }
                                 document.getElementById("showArray").innerHTML = arr;
+                                }
+                                else {
+                                    document.getElementById("showArray").innerHTML = arr + "<br>I'm cutting you off at 20 items in the array... sorry";
+                                }
+                                
                             }
                         </script>
                     </td>
