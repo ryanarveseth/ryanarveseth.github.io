@@ -27,10 +27,13 @@ table.eTable {
     margin-right: 0px;
     margin-left: auto;
     width: 525px;
-    border: 2px solid rgb(50, 200, 100);
-}
-table.eTable th {
+    border-collapse: separate;
     border-radius: 6px;
+    border: 2px solid rgb(50, 200, 100);
+    background:rgb(25,25,50);
+}
+.highlight {
+    color: rgb(255,255,0);
 }
 </style>
 <h1>Example of JavaScript</h1>
@@ -88,11 +91,11 @@ table.eTable th {
                                     function addToArray() {<br>
                                     <div class="tab">
                                         <div class="notes">// typical for-loop.<br>//It runs and adds 5 items to our array</div>
-                                        for (let i = 0; i < 5; i++) {<br>
+                                        <div class="highlight">for (let i = 0; i < 5; i++) {</div>
                                             <div class="tab">
                                                 arr.push(arr.length + 1);<br>
                                             </div>
-                                        }<br>
+                                        <div class="highlight">}</div>
                                         <div class="notes">// now we'll display the array</div>
                                         document.getElementById("showArray").innerHTML = arr;<br>
                                     </div>
@@ -110,7 +113,7 @@ table.eTable th {
                                             document.getElementById("showArray").innerHTML = arr;
                                             }
                                             else {
-                                                document.getElementById("showArray").innerHTML = arr + "<br><br>I'm cutting you off at 20 items in the array... sorry";
+                                                document.getElementById("showArray").innerHTML = arr + "<br><br>I'm cutting it off at 20 items in the array... sorry";
                                             }
                                             
                                         }
@@ -176,8 +179,8 @@ table.eTable th {
                                         for (let i = 0; i < 5; i++) {<br>
                                             <div class="tab">
                                                 <div class="notes">// if remainder of i / 2 = 0...</div>
-                                                if (i % 2 == 0) 
-                                                <div class="tab">arr.push(arr.length + 1);</div><br>
+                                                <div class="highlight">if (i % 2 == 0)</div> 
+                                                <div class="tab">arr.push(arr.length + 1);</div>
                                             </div>
                                         }<br>
                                         <div class="notes">// now we'll display the array</div>
@@ -186,7 +189,7 @@ table.eTable th {
                                     }
                                     
                                     <br><br>
-                                    <button onclick="showCondition();">Get Results of Loop</button><br><br><br>
+                                    <button onclick="showCondition();">Get Results of Conditions</button><br><br><br>
                                     <div id="showCondition"></div>
                                     <script> 
                                         arr = [];
@@ -198,7 +201,7 @@ table.eTable th {
                                             document.getElementById("showCondition").innerHTML = arr;
                                             }
                                             else {
-                                                document.getElementById("showCondition").innerHTML = arr + "<br><br>I'm cutting you off at 21 items in the array... sorry";
+                                                document.getElementById("showCondition").innerHTML = arr + "<br><br>I'm cutting it off at 21 items in the array... sorry";
                                             }
                                             
                                         }
@@ -225,7 +228,54 @@ table.eTable th {
                             <li>A function is executed when something calls it.</li>
                         </ul>
                     </td>
-                    <td></td>
+                    <td>
+                        <table class="eTable">
+                            <tr><th>Example of a function</th></tr><tr class="codeExample">
+                                <td>
+                                    <div class="notes">// Let's do the fibonacci sequence</div>
+                                    <div class="notes">// fib takes in a number and...<br>// returns the nth number in fib sequence</div>
+                                    <div class="highlight">function fib(n) {</div>
+                                    <div class="tab">
+                                        <div class="notes">// first 2 numbers in sequence are 0 & 1</div>
+                                        arr = [0, 1];<br>
+                                        for (let i = 2; i <= n; i++) {<br>
+                                            <div class="tab">
+                                                <div class="notes">// add next num to the array</div>
+                                                <div class="tab">arr.push(arr[i-1] + arr[i-2]);</div>
+                                            </div>
+                                        }<br>
+                                        <div class="notes">// return result to whoever called the function</div>
+                                        return arr[n];
+                                    </div>
+                                    <div class="highlight">}</div>
+                                    <br>
+                                    <br>
+                                    <div class="highlight">function getFib() {</div>
+                                        <div class="tab">
+                                            num = parseInt(document.getElementById("fibN").value);
+                                            document.getElementById("fibonacci").innerHTML = fib(num);
+                                        </div>
+                                    <div class="highlight">}</div>
+                                    Fib Number: <input type="text" id="fibN">
+                                    <button onclick="getFib();">Get Fib(n)</button><br><br><br>
+                                    <div id="fibonacci"></div>
+                                    <script> 
+                                        function fib(n) {
+                                            arr = [0, 1];
+                                            for (let i = 2; i <= n; i++)
+                                                arr.push(arr[i-1] + arr[i-2]);
+                                            return arr[n];
+                                        }
+
+                                        function getFib() {
+                                            document.getElementById("fibonacci").innerHTML = fib(parseInt(document.getElementById("fibN").value));
+                                        }
+                                    </script>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
                 </tr>
             </table>
         </td>
