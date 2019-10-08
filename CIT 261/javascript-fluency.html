@@ -306,7 +306,18 @@ tr.noSpace td {
                             <li>Variables</li>
                             <ul>
                                 <li>var</li>
+                                <ul>
+                                    <li>Redeclaring variables with var can make problems</li>
+                                    <li>When you change a var inside, or outside of a block - { } - it changes all of the other instances of it</li>
+                                    <li>Try the example to the right - it will change a var inside of a block.<br>Outside the block, it was also changed. </li>
+                                    <li>Does not have block scope</li>
+                                </ul>
                                 <li>let</li>
+                                <ul>
+                                    <li>Redeclaring variables with let can solve the problems stated above.</li>
+                                    <li>Redeclaring a variable inside a block will not change it outside the block.</li>
+                                    <li>Has block scope - (cannot be accessed from outside of block)</li>
+                                </ul>
                             </ul>
                         </ul>
                     </td>
@@ -362,14 +373,15 @@ tr.noSpace td {
                             <li>Arrays</li>
                             <ul>
                                 <li>var arr = [item1, item2, item3, etc...];</li>
-                                <li></li>
-                                <li></li>
+                                <li>Can be accessed with indexes -> arr[index]</li>
+                                <li>Array indexes start at 0. arr[0] is the 1st item in the array!</li>
                             </ul>
                             <li>Associative Arrays</li>
                             <ul>
                                 <li>arr["make"] = "Toyota";</li>
                                 <li>arr["model"] = "Camry";</li>
-                                <li>Associative arrays can also be known as Objects</li>
+                                <li>Associative arrays are turned into Objects by JavaScript</li>
+                                <li>Since associative arrays are redefined into objects, some of the<br>normal array methods won't produce their normal results!</li>
                             </ul>
                         </ul>
                     </td>
