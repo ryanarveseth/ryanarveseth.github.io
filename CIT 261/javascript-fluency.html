@@ -12,7 +12,7 @@
 }
 .notes {
     position: relative;
-    color: rgb(50,100,50);
+    color: rgb(75,125,75);
     font-weight: bolder;
 }
 </style>
@@ -63,14 +63,14 @@
                         </ul>
                     </td>
                     <td>
-                        <table>
-                            <tr><th>Example of a Loop</th></tr><tr>
+                        <table style="width:500px;">
+                            <tr><th>Example of a Loop</th></tr><tr style="background:rgb(25,25,50);color:white;">
                                 <td>
                                     <div class="notes">// creates an empty array</div>
                                     arr = [];<br>
                                     function addToArray() {<br>
                                     <div class="tab">
-                                        <div class="notes">// typical for-loop. It runs and adds 5 items to our array</div>
+                                        <div class="notes">// typical for-loop.<br>//It runs and adds 5 items to our array</div>
                                         for (let i = 0; i < 5; i++) {<br>
                                             <div class="tab">
                                                 arr.push(i + 1);<br>
@@ -93,7 +93,7 @@
                                             document.getElementById("showArray").innerHTML = arr;
                                             }
                                             else {
-                                                document.getElementById("showArray").innerHTML = arr + "<br>I'm cutting you off at 20 items in the array... sorry";
+                                                document.getElementById("showArray").innerHTML = arr + "<br><br>I'm cutting you off at 20 items in the array... sorry";
                                             }
                                             
                                         }
