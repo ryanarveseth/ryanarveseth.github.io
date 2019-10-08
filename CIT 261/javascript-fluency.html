@@ -78,17 +78,10 @@
                         <script> 
                             arr = [];
                             function showArray() {
-                                txt = "";
-                                for (let x = 0; x < 10; x++)
-                                    arr.push(arr.length + 1);
-                                    
-                                for (let i = 0; i < arr.length % 10; i++) {
-                                    for (let i = 0; i < 10; i++)
-                                        txt += arr[(x * 10) + i] + " ";
-                                    txt += "<br>";
-                                }    
                                 
-                                document.getElementById("showArray").innerHTML = txt + "<br><br>Notice how the loop doesn't include '10'? <br>That's because we started at zero and said 'go while it's less than 10'";
+                                for (let i = 0; i < 10; i++)
+                                    arr.push(arr.length + 1);
+                                document.getElementById("showArray").innerHTML = arr + "<br><br>Notice how the loop doesn't include '10'? <br>That's because we started at zero and said 'go while it's less than 10'";
                             }
                         </script>
                     </td>
