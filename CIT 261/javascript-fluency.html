@@ -76,10 +76,11 @@
                         <button onclick="showArray();">Get Results of Loop</button><br><br><br>
                         <div id="showArray"></div>
                         <script> 
+                            arr = [];
                             function showArray() {
-                                arr = [];
+                                
                                 for (let i = 0; i < 10; i++)
-                                    arr.push(i);
+                                    arr.push(arr.length + 1);
                                 document.getElementById("showArray").innerHTML = arr + "<br><br>Notice how the loop doesn't include '10'? <br>That's because we started at zero and said 'go while it's less than 10'";
                             }
                         </script>
