@@ -253,12 +253,12 @@ table.eTable {
                                     <div class="highlight">function getFib() {</div>
                                         <div class="tab">
                                             num = parseInt(document.getElementById("fibN").value);
-                                            document.getElementById("fibonacci").innerHTML = fib(num);
+                                            document.getElementById("fib").innerHTML = fib(num);
                                         </div>
-                                    <div class="highlight">}</div>
-                                    Fib Number: <input type="text" id="fibN">
-                                    <button onclick="getFib();">Get Fib(n)</button><br><br><br>
-                                    <div id="fibonacci"></div>
+                                    <div class="highlight">}</div><br><br>
+                                    Fib Number: <input type="text" id="fibN" size="5" maxlength="4">
+                                    <button onclick="getFib();">Get Fib(n)</button><br><br>
+                                    <div id="fib"></div>
                                     <script> 
                                         function fib(n) {
                                             arr = [0, 1];
@@ -268,7 +268,7 @@ table.eTable {
                                         }
 
                                         function getFib() {
-                                            document.getElementById("fibonacci").innerHTML = fib(parseInt(document.getElementById("fibN").value));
+                                            document.getElementById("fib").innerHTML = fib(parseInt(document.getElementById("fibN").value));
                                         }
                                     </script>
                                 </td>
