@@ -156,7 +156,47 @@
                         </ul>
                     </td>
                     <td>
-
+                        <table style="width:500px;">
+                            <tr><th>Example of a Condition</th></tr><tr class="codeExample">
+                                <td>
+                                    <div class="notes">// creates an empty array</div>
+                                    arr = [];<br>
+                                    function showCondition() {<br>
+                                    <div class="tab">
+                                        <div class="notes">// typical for-loop.<br>//It runs and adds 5 items to our array</div>
+                                        for (let i = 0; i < 5; i++) {<br>
+                                            <div class="tab">
+                                                <div class="notes">// if remainder of i / 2 = 0...</div>
+                                                if (i % 2 == 0) 
+                                                <div class="tab">arr.push(arr.length + 1);</div><br>
+                                            </div>
+                                        }<br>
+                                        <div class="notes">// now we'll display the array</div>
+                                        document.getElementById("showCondition").innerHTML = arr;<br>
+                                    </div>
+                                    }
+                                    
+                                    <br><br>
+                                    <button onclick="showCondition();">Get Results of Loop</button><br><br><br>
+                                    <div id="showCondition"></div>
+                                    <script> 
+                                        arr = [];
+                                        function showCondition() {
+                                            if (arr.length < 20) {
+                                            for (let i = 0; i < 5; i++)
+                                                if (i % 2 == 0)
+                                                    arr.push(arr.length + 1);
+                                            document.getElementById("showCondition").innerHTML = arr;
+                                            }
+                                            else {
+                                                document.getElementById("showCondition").innerHTML = arr + "<br><br>I'm cutting you off at 20 items in the array... sorry";
+                                            }
+                                            
+                                        }
+                                    </script>
+                                </td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
             </table>
