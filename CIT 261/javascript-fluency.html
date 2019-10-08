@@ -395,13 +395,13 @@ table.eTable {
                                         var car = [];
                                         var names = [];
                                         function addToArrays() {
-                                            var names = document.getElementById("names").value;
+                                            var n = document.getElementById("names").value;
                                             var make = document.getElementById("make").value;
                                             var model = document.getElementById("model").value;
                     
                                             car["make"] = make;
                                             car["model"] = model;
-                                            names.push(names);
+                                            names.push(n);
 
                                             document.getElementById("arrs").innerHTML =  "names array: " + names + "<br>cars associative array: " + car;
                                         }
