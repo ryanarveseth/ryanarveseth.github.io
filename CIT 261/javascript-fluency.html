@@ -84,9 +84,10 @@
                         <script> 
                             arr = [];
                             function showArray() {
-                                
+                                if (arr.length <= 20) {
                                 for (let i = 0; i < 5; i++)
                                     arr.push(arr.length + 1);
+                                }
                                 document.getElementById("showArray").innerHTML = arr;
                             }
                         </script>
