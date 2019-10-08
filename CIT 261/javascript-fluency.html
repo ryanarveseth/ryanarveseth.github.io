@@ -35,9 +35,10 @@ table.eTable {
 .highlight {
     color: rgb(255,255,0);
 }
-.noSpace {
+tr.noSpace td {
     padding: 0px;
     margin: 0px;
+    height: 25px;
 }
 </style>
 <h1>Example of JavaScript</h1>
@@ -303,6 +304,10 @@ table.eTable {
                     <td>
                         <ul>
                             <li>Variables</li>
+                            <ul>
+                                <li>var</li>
+                                <li>let</li>
+                            </ul>
                         </ul>
                     </td>
                     <td>
@@ -362,9 +367,9 @@ table.eTable {
                             </ul>
                             <li>Associative Arrays</li>
                             <ul>
-                                <li></li>
-                                <li></li>
-                                <li></li>
+                                <li>arr["make"] = "Toyota";</li>
+                                <li>arr["model"] = "Camry";</li>
+                                <li>Associative arrays can also be known as Objects</li>
                             </ul>
                         </ul>
                     </td>
@@ -375,7 +380,7 @@ table.eTable {
                                     <div class="notes">// Let's get an array!</div>
                                     <div class="highlight">var car = [];</div>
                                     <div class="notes">// ...And an associative array!</div>
-                                    <div class="notes">// Right now, these are both empty arrays!</div>
+                                    <div class="notes">// Right now these are both just empty arrays</div>
                                     <div class="highlight">var names = [];</div><br>
                                     function addToArrays() {<br>
                                         <div class="tab">
@@ -391,11 +396,11 @@ table.eTable {
                                         </div>
                                     }<br><br><br>
                                     <table>
-                                        <tr class="codeExample noSpace"><td>Person's Name:</td><td><input type="text" id="names" size="15" maxlength="15"></td></tr>
-                                        <tr class="codeExample noSpace"><td>Car Make:</td><td><input type="text" id="make" size="15" maxlength="15"></td></tr>
-                                        <tr class="codeExample noSpace"><td>Car Model:</td><td><input type="text" id="model" size="15" maxlength="15"></td></tr>
+                                        <tr class="codeExample noSpace"><td>Person's Name: </td><td><input type="text" id="names" size="15" maxlength="15"></td></tr>
+                                        <tr class="codeExample noSpace"><td>Car Make: </td><td><input type="text" id="make" size="15" maxlength="15"></td></tr>
+                                        <tr class="codeExample noSpace"><td>Car Model: </td><td><input type="text" id="model" size="15" maxlength="15"></td></tr>
                                         <tr class="codeExample noSpace"><td colspan="2"><button onclick="addToArrays();">Add to Arrays</button></td></tr>
-                                    </table>
+                                    </table><br><br>
                                     <div id="arrs"></div>
                                     <script>
                                         var car = [];
@@ -409,7 +414,7 @@ table.eTable {
                                             car["model"] = model;
                                             names.push(n);
 
-                                            document.getElementById("arrs").innerHTML =  "names array: " + names + "<br>cars associative array: " + car;
+                                            document.getElementById("arrs").innerHTML =  "names array: " + names + "<br>cars associative array: " + car["make"] + "," + car["model"];
                                         }
                                     </script>
                                 </td>
