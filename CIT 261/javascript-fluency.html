@@ -65,8 +65,8 @@
                     <td>
                         <div class="notes">// creates an empty array</div>
                         arr = [];<br>
-                        <div class="notes">// here's our for-loop. It runs 10 times, and adds each iteration to our array</div>
-                        for (let i = 0; i < 10; i++) {<br>
+                        <div class="notes">// here's our for-loop. It runs 5 times, and adds to our array</div>
+                        for (let i = 0; i < 5; i++) {<br>
                             <div class="tab">
                                 arr.push(i);<br>
                             </div>
@@ -79,9 +79,9 @@
                             arr = [];
                             function showArray() {
                                 
-                                for (let i = 0; i < 10; i++)
+                                for (let i = 0; i < 5; i++)
                                     arr.push(arr.length + 1);
-                                document.getElementById("showArray").innerHTML = arr + "<br><br>Notice how the loop doesn't include '10'? <br>That's because we started at zero and said 'go while it's less than 10'";
+                                document.getElementById("showArray").innerHTML = arr;
                             }
                         </script>
                     </td>
