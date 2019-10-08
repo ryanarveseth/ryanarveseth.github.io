@@ -218,14 +218,24 @@ table.eTable {
         <td colspan='7'>
             <table style='width:100%;'> 
                 <tr>
-                    <th colspan='2' style='background:rgb(50,50,50);'>JavaScript Functions</th>
+                    <th colspan='2' style='background:rgb(50,50,50);'>JavaScript Functions & Parameters</th>
                 </tr>
                 <tr>
                     <td>
                         <ul>
                             <li>Functions</li>
-                            <li>A block of code which is designed to perform a specific task</li>
-                            <li>A function is executed when something calls it.</li>
+                            <ul>
+                                <li>Example: <div class="tab">function myFunction() { }<br><div class="tab">OR</div>function myFunction(parameters...) { }</div></li>
+                                <li>A block of code which is designed to perform a specific task</li>
+                                <li>A function is executed when something calls it.</li>
+                                <li>You can pass parameters to functions when you want it to do something<br>with the value</li>
+                            </ul>
+                            <li>Parameters</li>
+                            <ul>
+                                <li>Example: function myFunction(parameter1, parameter2, parameter3) { }</li>
+                                <li>Parameters are passed through to functions, as seen in the fib(n) function to the right.</li>
+                                <li>In that case, the function takes n, and uses it to accomplish its task</li>
+                            </ul>
                         </ul>
                     </td>
                     <td>
@@ -274,7 +284,6 @@ table.eTable {
                                 </td>
                             </tr>
                         </table>
-
                     </td>
                 </tr>
             </table>
@@ -292,7 +301,42 @@ table.eTable {
                             <li>Variables</li>
                         </ul>
                     </td>
-                    <td></td>
+                    <td>
+                        <table class="eTable">
+                            <tr><th>Example of a Variable</th></tr><tr class="codeExample">
+                                <td>
+                                    <div class="notes">// Let's get a variable!</div>
+                                    <div class="notes">// ...And find differences in let vs var!</div>
+                                    function getVariables() {<br>
+                                        <div class="tab">
+                                            <div class="highlight">
+                                                var a = parseInt(document.getElementById("vari").value);<br>
+                                                let b = parseInt(document.getElementById("vari").value);<br>
+                                            </div>
+                                            {<br>
+                                            <div class="tab"><div class="highlight">var a = "changed!";<br>let b = "changed!";</div></div>
+                                            }<br>
+                                            document.getElementById("vars").innerHTML = "...";<br>
+                                        </div>
+                                    }<br><br><br>
+                                    Value: <input type="text" id="vari" size="5" maxlength="4">
+                                    <button onclick="getVariables();">Run Variable</button><br><br>
+                                    <div id="vars"></div>
+                                    <script> 
+                                        function getVariables() {
+                                            var a = parseInt(document.getElementById("vari").value);
+                                            let b = parseInt(document.getElementById("vari").value);
+                                            { 
+                                                var a = "changed!";
+                                                let b = "changed!";
+                                            }
+                                            document.getElementById("vars").innerHTML = "a value after { ... }: " + a + "<br>b value after { ... }: " + b;
+                                        }
+                                    </script>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
                 </tr>
             </table>
         </td>   
@@ -301,52 +345,29 @@ table.eTable {
         <td colspan='7'>
             <table style='width:100%;'> 
                 <tr>
-                    <th colspan='2' style='background:rgb(50,50,50);'>JavaScript Parameters</th>
+                    <th colspan='2' style='background:rgb(50,50,50);'>JavaScript Arrays & Associative Arrays</th>
                 </tr>
                 <tr>
                     <td>
-                        <ul>
-                            <li>Parameters</li>
-                        </ul>
-                    </td>
-                    <td></td>
-                </tr>
-            </table>
-        </td>    
-    </tr>
-    <tr>
-        <td colspan='7'>
-            <table style='width:100%;'> 
-                <tr>
-                    <th colspan='2' style='background:rgb(50,50,50);'>JavaScript Arrays</th>
-                </tr>
-                <tr>
-                    <td>
-                        <ul>
+                        <ul> 
                             <li>Arrays</li>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                            <li>Associative Arrays</li>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
                         </ul>
                     </td>
                     <td></td>
                 </tr>
             </table>
         </td>   
-    </tr>
-    <tr>
-        <td colspan='7'>
-            <table style='width:100%;'> 
-                <tr>
-                    <th colspan='2' style='background:rgb(50,50,50);'>JavaScript Associative Arrays</th>
-                </tr>
-                <tr>
-                    <td>
-                        <ul>
-                            <li>Associative Arrays</li>
-                        </ul>
-                    </td>
-                    <td></td>
-                </tr>
-            </table>
-        </td>
     </tr>
 </table>
 <a href="https://ryanarveseth.github.io" class="home">Go Home</a>
