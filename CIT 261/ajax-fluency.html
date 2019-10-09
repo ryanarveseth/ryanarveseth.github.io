@@ -6,6 +6,75 @@
 </head>
 <body>
 <h1>AJAX</h1>
+<table><tr><th colspan='7'>AJAX</th></tr> 
+    <tr>
+        <td colspan='7'>
+            <table style='width:100%;'> 
+                <tr>
+                    <th colspan='2' style='background:rgb(50,50,50);'>JavaScript Loops</th>
+                </tr>
+                <tr>
+                    <td>
+                        <ul>
+                            <li>AJAX - Asynchonous JavaScript and XML</li>
+                            <ul>
+                                <li>Not a programming language</li>
+                                <li>Read data from a web server - without reloading the page!</li>
+                            </ul>
+                            <li>While the name indicates only the transfer of XML data,<br>AJAX can get JSON and plain text as well!</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <table class="eTable">
+                            <tr><th>AJAX Example</th></tr><tr class="codeExample">
+                                <td>
+                                    <div class="notes">// here's our AJAX function</div>
+                                    function loadDoc() {<br>
+                                    <div class="tab">
+                                        <div class="notes">// create a new XMLHttp request<br>// </div>
+                                        <div class="highlight">var xhttp = <div style="color:blue;display:inline;">new</div> XMLHttpRequest();</div>
+                                            <div class="tab">
+                                                <div class="highlight">xhttp.onreadystatechange = function() {
+                                                    <div class="tab">
+                                                        if (this.readyState == 4 && this.status == 200) {<br>
+                                                        <div class="tab">
+                                                            document.getElementById("ajax").innerHTML = this.responseText;
+                                                        </div>
+                                                    }
+                                                    </div>
+                                                </div>
+                                            };
+                                            </div>
+                                        <div class="highlight">xhttp.open("GET, "ajaxExample.txt", true);<br>xhttp.send();</div>
+                                    }
+                                    <br><br>
+                                    <button onclick="showArray();">Get Results of Loop</button><br><br><br>
+                                    <div id="showArray"></div>
+                                    <script> 
+                                        arr1 = [];
+                                        function showArray() {
+                                            if (arr1.length < 20) {
+                                            for (let i = 0; i < 5; i++)
+                                                arr1.push(arr1.length + 1);
+                                            document.getElementById("showArray").innerHTML = arr1;
+                                            }
+                                            else {
+                                                document.getElementById("showArray").innerHTML = arr1 + "<br><br>I'm cutting it off at 20 items in the array... sorry";
+                                            }
+                                            
+                                        }
+                                    </script>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+
 
 </body>
 <a href="https://ryanarveseth.github.io" class="home">Go Home</a>
