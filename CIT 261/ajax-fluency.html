@@ -83,7 +83,7 @@
             xhttp.onreadystatechange = function() { 
                 if (this.readyState == 4 && this.status == 200) {
                     x++;
-                    document.getElementById("showAjax").innerHTML += this.responseText + "<br>";
+                    document.getElementById("showAjax").innerHTML += this.responseText + "<br><br>";
                 }
             };
             xhttp.open("GET", "ajax.txt", true);
