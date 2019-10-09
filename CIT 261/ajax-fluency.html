@@ -31,21 +31,25 @@
                                     <div class="notes">// here's our AJAX function</div>
                                     function loadDoc() {<br>
                                     <div class="tab">
-                                        <div class="notes">// create a new XMLHttp request<br>// </div>
-                                        <div class="highlight">var xhttp = <div style="color:blue;display:inline;">new</div> XMLHttpRequest();</div>
+                                        var aj = document.getElementByID("ajax");
+                                        <div class="notes">// create a new XMLHttp request</div>
+                                        <div class="highlight">var xhttp = <div style="color:rgb(73, 73, 255);display:inline;">new</div> XMLHttpRequest();</div>
                                             <div class="tab">
-                                                <div class="highlight">xhttp.onreadystatechange = function() {
+                                                <div class="notes">// wait for the xhttp ready state to change</div>
+                                                xhttp.onreadystatechange = function() {
+                                                <div class="tab">
+                                                    <div class="notes">// if it's ready and successful, get response text</div>
+                                                    if (this.readyState == 4 && this.status == 200) {<br>
                                                     <div class="tab">
-                                                        if (this.readyState == 4 && this.status == 200) {<br>
-                                                        <div class="tab">
-                                                            document.getElementById("ajax").innerHTML = this.responseText;
-                                                        </div>
-                                                    }
+                                                        <div class="notes">// the ajax request returns a 'responseText'</div>
+                                                        aj.innerHTML += this.responseText + "< br >";
                                                     </div>
+                                                }
                                                 </div>
                                             };
                                             </div>
-                                        <div class="highlight">xhttp.open("GET, "ajaxExample.txt", true);<br>xhttp.send();</div>
+                                        <div class="highlight">xhttp.open("GET, "ajax.txt", true);<br>xhttp.send();</div>
+                                    </div>
                                     }
                                     <br><br>
                                     <button onclick="showArray();">Get Results of Loop</button><br><br><br>
