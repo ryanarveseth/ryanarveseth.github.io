@@ -64,7 +64,7 @@
     </tr>
 </table>
 <script> 
-    var x = 1;
+    var x = 0;
     function showajax() { 
         if (x < 2) {
             var xhttp = new XMLHttpRequest();
@@ -79,6 +79,7 @@
         }
         else if (x == 3) {
             document.getElementById("showAjax").innerHTML += "Okay, I think you're done now.";
+            x++;
         }
     }
 
