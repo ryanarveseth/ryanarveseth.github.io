@@ -57,3 +57,37 @@ a.home {
     bottom: 10px;
     left: 10px;
 }
+.tab {
+    position: relative;
+    left: 25px;
+}
+.notes {
+    position: relative;
+    color: rgb(75,125,75);
+    font-weight: bolder;
+}
+.codeExample {
+    background:rgb(25,25,50);
+    color:white;
+}
+.codeExample:hover {
+    background:rgb(25,25,50);
+    color:white;
+}
+table.eTable {
+    margin-right: 0px;
+    margin-left: auto;
+    width: 525px;
+    border-collapse: separate;
+    border-radius: 6px;
+    border: 2px solid rgb(50, 200, 100);
+    background:rgb(25,25,50);
+}
+.highlight {
+    color: rgb(255,255,0);
+}
+tr.noSpace td {
+    padding: 0px;
+    margin: 0px;
+    height: 25px;
+}
