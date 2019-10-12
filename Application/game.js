@@ -68,6 +68,7 @@ class Ball {
         this.mass = 6 * 6 * 6;
         this.radius = 6;
         this.started = false;
+        this.hits = 10;
     }
     kill() {
         this.alive = false;
@@ -79,8 +80,8 @@ class Ball {
         if (this.x + this.vx > myGameArea.canvas.width || this.x + this.vx < 0)
             this.vx *= -1;
         if (this.y + this.vy > myGameArea.canvas.height - 6) {
-            //this.vy *= -1;
-            this.kill();
+            this.vy *= -1;
+            //this.kill();
         }
         ctx.beginPath();
         ctx.fillStyle = "rgb(240, 150, 0)";
@@ -215,8 +216,16 @@ function ballCollision() {
                 var dy2F = (v2 * Math.cos(theta2 - phi) * (m2-m1) + 2*m1*v1*Math.cos(theta1 - phi)) / (m1+m2) * Math.sin(phi) + v2*Math.sin(theta2-phi) * Math.sin(phi+Math.PI/2);
 
                 if (balls[i].vx != dx1F || balls[i].vy != dy1F || balls[x].vx != dx2F || balls[x].vy != dy2F)
-                    if (balls[i].started && balls[x].started)
-                    collisions++;
+                    if (balls[i].started && balls[x].started) {
+                        collisions++;
+                        if (!(balls[i].hits--)) {
+                            balls[i].kill();
+                        }
+                        if (!(balls[x].hits--)) {
+                            balls[x].kill();
+                        }
+                    }
+                    
 
                 balls[i].vx = dx1F;
                 balls[i].vy = dy1F;
