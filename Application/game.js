@@ -240,7 +240,7 @@ function ballCollision() {
 function applyGravity() {
     for (var b in balls) {
         if (balls[b].onGround() == false) {
-            balls[b].vy += 0.009;
+           // balls[b].vy += 0.009;
         }   
     }
 }
