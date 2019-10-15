@@ -1,4 +1,4 @@
-var slider = document.getElementById("myRange");
+var slider = document.getElementById("gravRange");
 var output = document.getElementById("gravStrength");
 output.innerHTML = slider.value; // Display the default slider value
 
