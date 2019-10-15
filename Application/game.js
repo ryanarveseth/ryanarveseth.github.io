@@ -8,6 +8,10 @@ var canvas = document.getElementById("gameCanvas");
 var ctx = document.getElementById("gameCanvas").getContext('2d');
 var collisions = 0;
 
+
+
+
+
 function game() {
     //ball = new ball(canvas.width / 2 + 3,canvas.height - 6)
     myGameArea.start();

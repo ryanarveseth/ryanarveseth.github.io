@@ -92,13 +92,5 @@ tr.noSpace td {
     height: 25px;
 }
 
-@keyframes bounce {
-    0%   { /*  FALL  */ transform: translateY(0);  }
-    100% { /*  FALL  */ transform: translateY(-50px);  }
-}
 
-h2 {
-    animation: bounce 0.8s;
-    animation-direction: alternate;
-    animation-iteration-count: infinite;
-  }
+
