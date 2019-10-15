@@ -69,7 +69,7 @@ var pointer =  {
             pointer.x = event.clientX - rect.left;
             pointer.y = event.clientY - rect.top;
        // }
-        event.preventDefault();
+       // event.preventDefault();
     }
 } 
 
