@@ -58,17 +58,17 @@ var pointer =  {
         ctx.stroke();
     },
     reposition : function(event) {
-        if (event == "touchmove") {
+        /*if (event == "touchmove") {
             var tchObj = event.changedTouches[0];
             var rect = canvas.getBoundingClientRect();
             pointer.x = tchObj.clientX - rect.left;
             pointer.y = tchObj.clientY - rect.top;
         }
-        else {
+        else {*/
             var rect = canvas.getBoundingClientRect();
             pointer.x = event.clientX - rect.left;
             pointer.y = event.clientY - rect.top;
-        }
+       // }
         event.preventDefault();
     }
 } 
