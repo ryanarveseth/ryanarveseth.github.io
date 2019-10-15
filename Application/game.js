@@ -1,4 +1,7 @@
 
+var gravStrength;
+var blues;
+var blues_count = 0; 
 var pos;
 var blocks = [];
 var balls = [];
@@ -63,22 +66,24 @@ var pointer =  {
 
 
 class Ball {
-    constructor(x, y, vx, vy) {         
+    constructor(x, y, vx, vy, b, rad) {         
         this.x = x;
         this.y = y;
         this.vx = vx;
         this.vy = vy;
         this.alive = true;
-        this.mass = 6 * 6 * 6;
-        this.radius = 6;
+        this.radius = rad;
+        this.mass = 6;
         this.started = false;
         this.hits = 10;
+        this.isBlue = b;
     }
     kill() {
         this.alive = false;
         this.started = false;
     }
     draw() { 
+        this.isBlue ? this.radius = 10 : this.radius = 6;
         if (this.y + this.vy < 6)
             this.vy *= -1;
         if (this.x + this.vx > myGameArea.canvas.width || this.x + this.vx < 0)
@@ -88,8 +93,8 @@ class Ball {
             //this.kill();
         }
         ctx.beginPath();
-        ctx.fillStyle = "rgb(240, 150, 0)";
-        ctx.arc(this.x, this.y, 6, 0, 2 * Math.PI);
+        ctx.fillStyle = this.isBlue == true ? "rgb(102, 153, 255)" : "rgb(240, 150, 0)";
+        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
         ctx.fill();
     }
     handleEvent(evt) {
@@ -113,6 +118,7 @@ class Ball {
     }
 }
 
+canvas.addEventListener("touchstart", pointer.reposition, true);
 canvas.addEventListener("touchmove", pointer.reposition, true);
 canvas.addEventListener("mousemove", pointer.reposition, true);
 
@@ -154,9 +160,24 @@ function updateGame() {
     myGameArea.clear();
     if (startingvx != 0 || startingvy != 0) {
         if (balls.length == 0) {
-            for (let i = 0; i < 200; i++) {
+            var ballCount = document.getElementById("ballCountSlide").value;
+            blues = document.getElementById("killer-blues").checked ? true : false;
+            gravStrength = document.getElementById("gravRange").value;
+            console.log(blues);
+            for (let i = 0; i < ballCount; i++) {
                 if (startingvx != 0 || startingvy != 0) {
-                    var newBall = new Ball(myGameArea.canvas.width / 2 - 6, myGameArea.canvas.height -6, startingvx, startingvy);
+                    if (blues) {
+                        var isBlue = (Math.round(Math.random() * 75));
+                        isBlue = isBlue == 5 ? true : false;
+                        if (i == ballCount - 1 && blues_count == 0) {
+                            isBlue = true;
+                        }
+                        if (isBlue)
+                            blues_count++;
+                    }
+                    else 
+                        var isBlue = false;
+                    var newBall = new Ball(myGameArea.canvas.width / 2 - 6, myGameArea.canvas.height -6, startingvx, startingvy, isBlue, isBlue ? 10 : 6);
                     balls.push(newBall);
                 }
             }
@@ -189,7 +210,10 @@ function updateGame() {
         ballCollision();
     }
     pointer.draw();
-    
+    console.log(deadCount, balls.length);
+    if (deadCount + 2 == balls.length) {
+        gameOver();
+    } 
     if (deadCount == balls.length)
         gameOver();
 }
@@ -204,38 +228,42 @@ function gameOver() {
 
 function ballCollision() {
     for (var i = 0; i < balls.length; i++) {
-        for (var x = 0; x < balls.length; x++) {
-            if (i !== x && distanceNextFrame(balls[i], balls[x]) <= 0) {
-                var theta1 = balls[i].getAngle();
-                var theta2 = balls[x].getAngle();
-                var phi = Math.atan2(balls[x].y - balls[i].y, balls[x].x - balls[i].x);
-                var m1 = balls[i].mass;
-                var m2 = balls[x].mass;
-                var v1 = balls[i].getSpeed();
-                var v2 = balls[x].getSpeed();
+        if (balls[i].alive)
+            for (var x = 0; x < balls.length; x++) {
+                if (balls[x].alive)
+                    if (i !== x && distanceNextFrame(balls[i], balls[x]) <= 0) {
+                        var theta1 = balls[i].getAngle();
+                        var theta2 = balls[x].getAngle();
+                        var phi = Math.atan2(balls[x].y - balls[i].y, balls[x].x - balls[i].x);
+                        var m1 = balls[i].mass;
+                        var m2 = balls[x].mass;
+                        var v1 = balls[i].getSpeed();
+                        var v2 = balls[x].getSpeed();
 
-                var dx1F = (v1 * Math.cos(theta1 - phi) * (m1-m2) + 2*m2*v2*Math.cos(theta2 - phi)) / (m1+m2) * Math.cos(phi) + v1*Math.sin(theta1-phi) * Math.cos(phi+Math.PI/2);
-                var dy1F = (v1 * Math.cos(theta1 - phi) * (m1-m2) + 2*m2*v2*Math.cos(theta2 - phi)) / (m1+m2) * Math.sin(phi) + v1*Math.sin(theta1-phi) * Math.sin(phi+Math.PI/2);
-                var dx2F = (v2 * Math.cos(theta2 - phi) * (m2-m1) + 2*m1*v1*Math.cos(theta1 - phi)) / (m1+m2) * Math.cos(phi) + v2*Math.sin(theta2-phi) * Math.cos(phi+Math.PI/2);
-                var dy2F = (v2 * Math.cos(theta2 - phi) * (m2-m1) + 2*m1*v1*Math.cos(theta1 - phi)) / (m1+m2) * Math.sin(phi) + v2*Math.sin(theta2-phi) * Math.sin(phi+Math.PI/2);
+                        var dx1F = (v1 * Math.cos(theta1 - phi) * (m1-m2) + 2*m2*v2*Math.cos(theta2 - phi)) / (m1+m2) * Math.cos(phi) + v1*Math.sin(theta1-phi) * Math.cos(phi+Math.PI/2);
+                        var dy1F = (v1 * Math.cos(theta1 - phi) * (m1-m2) + 2*m2*v2*Math.cos(theta2 - phi)) / (m1+m2) * Math.sin(phi) + v1*Math.sin(theta1-phi) * Math.sin(phi+Math.PI/2);
+                        var dx2F = (v2 * Math.cos(theta2 - phi) * (m2-m1) + 2*m1*v1*Math.cos(theta1 - phi)) / (m1+m2) * Math.cos(phi) + v2*Math.sin(theta2-phi) * Math.cos(phi+Math.PI/2);
+                        var dy2F = (v2 * Math.cos(theta2 - phi) * (m2-m1) + 2*m1*v1*Math.cos(theta1 - phi)) / (m1+m2) * Math.sin(phi) + v2*Math.sin(theta2-phi) * Math.sin(phi+Math.PI/2);
 
-                if (balls[i].vx != dx1F || balls[i].vy != dy1F || balls[x].vx != dx2F || balls[x].vy != dy2F)
-                    if (balls[i].started && balls[x].started) {
-                        collisions++;
-                        if (!(balls[i].hits--)) {
-                            balls[i].kill();
-                        }
-                        if (!(balls[x].hits--)) {
-                            balls[x].kill();
-                        }
-                    }
-                    
+                        if (balls[i].vx != dx1F || balls[i].vy != dy1F || balls[x].vx != dx2F || balls[x].vy != dy2F)
+                            if (balls[i].started && balls[x].started) {
+                                collisions++;
+                                if (balls[i].isBlue && balls[x].isBlue) {
+                                    balls[i].kill();
+                                    balls[x].kill();
+                                } else if (balls[i].isBlue && !balls[x].isBlue) {
+                                    balls[x].isBlue = true;
+                                } else if (balls[x].isBlue && !balls[i].isBlue) {
+                                    balls[i].isBlue = true;
+                                }
+                            }
+                            
 
-                balls[i].vx = dx1F;
-                balls[i].vy = dy1F;
-                balls[x].vx = dx2F;
-                balls[x].vy = dy2F;
-            }            
+                        balls[i].vx = dx1F;
+                        balls[i].vy = dy1F;
+                        balls[x].vx = dx2F;
+                        balls[x].vy = dy2F;
+                    }            
         }
         //wallCollision(balls[obj1]);
     }
@@ -244,12 +272,36 @@ function ballCollision() {
 function applyGravity() {
     for (var b in balls) {
         if (balls[b].onGround() == false) {
-           // balls[b].vy += 0.009;
+            balls[b].vy += 0.01 * gravStrength;
         }   
+    }
+    if (balls[b].y > myGameArea.canvas.height) {
+        balls[b].y--;
     }
 }
 
 
 function distanceNextFrame(a, b) {
     return Math.sqrt((a.x + a.vx - b.x - b.vx)**2 + (a.y + a.vy - b.y - b.vy)**2) - a.radius - b.radius;
+}
+
+
+var gravSlide = document.getElementById("gravRange");
+var gravOut = document.getElementById("gravStrength");
+var ballSlide = document.getElementById("ballCountSlide");
+var ballOut = document.getElementById("ballCount");
+
+//var slider = document.getElementById("gravRange");
+//var output = document.getElementById("gravStrength");
+gravOut.innerHTML = gravSlide.value; // Display the default slider value
+ballOut.innerHTML = ballSlide.value; // Display the default slider value
+//output.innerHTML = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+gravSlide.oninput = function() {
+    gravOut.innerHTML = this.value;
+}
+
+ballSlide.oninput = function() {
+    ballOut.innerHTML = this.value;
 }

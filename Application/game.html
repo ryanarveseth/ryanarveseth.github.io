@@ -8,7 +8,7 @@
 </head>
 <body onload="game();">
     <h2 class="txtAnimation">BOUNCE</h2>
-    <div id="score" class="score">Time Alive: </div>
+    <div id="score" class="score"></div>
     <div class="over">
         <canvas id="gameCanvas" style="display:block;" width="320" height="480"></canvas>
         <div class="menu" id="playAgain">
@@ -17,10 +17,37 @@
         </div>
         <div class="menu settings">
             <div class="gameModifiers">
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                </label>
+                <table style="text-align:center;margin: 0 auto;">
+                    <tr>
+                        <th colspan="2">Modifiers</th>
+                    </tr>
+                    <tr>
+                        <td><label for="killer-blues">'Killer' Blues</label></td>
+                        <td>
+                            <label class="switch">
+                                <input type="checkbox" id="killer-blues" checked="checked">
+                                <span class="slider round"></span>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr><td colspan="2">Strength of Gravity: <span id="gravStrength"></span></td></tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="slidecontainer">
+                                <input type="range" min="0" max="9" value="0" class="rangeSlider" id="gravRange">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr><td colspan="2">Number of Balls: <span id="ballCount"></span></td></tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="slidecontainer">
+                                <input type="range" min="100" max="350" value="100" class="rangeSlider" id="ballCountSlide">
+                            </div>
+                        </td>
+                    </tr>
+    
+                </table>
             </div>
         </div>
     </div>
