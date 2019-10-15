@@ -58,9 +58,18 @@ var pointer =  {
         ctx.stroke();
     },
     reposition : function(event) {
-        var rect = canvas.getBoundingClientRect();
-        pointer.x = event.clientX - rect.left;
-        pointer.y = event.clientY - rect.top;
+        if (event == "touchmove") {
+            var tchObj = event.changedTouches[0];
+            var rect = canvas.getBoundingClientRect();
+            pointer.x = tchObj.clientX - rect.left;
+            pointer.y = tchObj.clientY - rect.top;
+        }
+        else {
+            var rect = canvas.getBoundingClientRect();
+            pointer.x = event.clientX - rect.left;
+            pointer.y = event.clientY - rect.top;
+        }
+        event.preventDefault();
     }
 } 
 
@@ -163,7 +172,6 @@ function updateGame() {
             var ballCount = document.getElementById("ballCountSlide").value;
             blues = document.getElementById("killer-blues").checked ? true : false;
             gravStrength = document.getElementById("gravRange").value;
-            console.log(blues);
             for (let i = 0; i < ballCount; i++) {
                 if (startingvx != 0 || startingvy != 0) {
                     if (blues) {
@@ -210,7 +218,6 @@ function updateGame() {
         ballCollision();
     }
     pointer.draw();
-    console.log(deadCount, balls.length);
     if (deadCount + 2 == balls.length) {
         gameOver();
     } 
