@@ -91,3 +91,25 @@ tr.noSpace td {
     margin: 0px;
     height: 25px;
 }
+h2 {
+    animation-name: bounce;
+    animation-duration: 1.5s; 
+    animation-timing-function: ease-out; 
+    animation-delay: 0;
+    -webkit-animation-direction: alternate; 
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-play-state: running;
+}
+
+
+@keyframes bounce {
+    0%   { /*  FALL  */ top: 0px;  }
+    10%  {/*  FALL  */ top: 5px;  }
+    25%  {/*  FALL  */ top: 15px; }
+    50%  {/*  Bnce  */ top: 35px; }
+    75%  {/*  UP    */ top: 15px; }
+    85%  {/*  UP    */ top: 5px;  }
+    100% {/*  UP   */ top: 5px;  }
+}
