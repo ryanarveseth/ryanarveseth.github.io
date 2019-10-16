@@ -37,9 +37,7 @@ function openMods() {
     }
     else {
         // set blues to the local storage variable
-        localStorage.getItem("blues") ? 
-            document.getElementById("killer-blues").checked = true : 
-            document.getElementById("killer-blues").checked = false;
+        document.getElementById("killer-blues").checked = localStorage.getItem("blues") == "true" ? true : false;
         // Set the gravity amount
         document.getElementById("gravRange").value = localStorage.getItem("gravity");
         gravOut.innerHTML = localStorage.getItem("gravity");
