@@ -230,7 +230,7 @@ function gameOver() {
     clearInterval(myGameArea.interval);
 
     document.getElementById("playAgain").style.display = "inline";
-
+    
 }
 
 function ballCollision() {
@@ -283,7 +283,7 @@ function applyGravity() {
         }   
     }
     if (balls[b].y > myGameArea.canvas.height) {
-        balls[b].y--;
+        balls[b].y-= 10;
     }
 }
 
