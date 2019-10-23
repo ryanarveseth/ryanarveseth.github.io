@@ -15,7 +15,7 @@ var speed;
 var countDown;
 var now;
 var timr;
-var nickname = "";
+var nickname = null;
 var namesubmitted = false;
 
 function setVariables() {
@@ -295,7 +295,7 @@ function gameOver() {
 
     if (collisions) { document.getElementById("hScores").style.display = "block"; }
     
-    while (nickname == "") {
+    while (nickname == null) {
         console.log("waiting...");
     }
 
