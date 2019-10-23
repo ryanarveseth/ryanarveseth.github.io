@@ -356,7 +356,7 @@ function applyGravity() {
 
 function getHighScores() {
     if (localStorage.getItem("scores") == null)
-        return null;
+        return [];
     
     response = JSON.parse(localStorage.getItem("scores"));
     return response;
