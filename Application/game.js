@@ -286,7 +286,10 @@ function gameOver() {
     }
     
     // Normalize our score!
+    console.log(ballCount);
+    console.log(collisions);
     collisions = parseInt(collisions * (100 / ballCount));
+    console.log(collisions);
     scoresObj = getHighScores();
 
     if (scoresObj == null) {
