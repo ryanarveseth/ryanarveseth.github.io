@@ -279,7 +279,7 @@ function gameOver() {
             orangeAlive = true;
     }
 
-    if (orangeAlive) {
+    if (orangeAlive == true) {
         collisions *= 1.5;
         document.getElementById("score").innerHTML = "Score: " + parseInt(collisions * (100 / ballCount));
          
