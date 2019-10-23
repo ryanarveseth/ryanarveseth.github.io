@@ -282,6 +282,7 @@ function gameOver() {
     if (orangeAlive) {
         collisions *= 1.5;
         document.getElementById("score").innerHTML = "Score: " + parseInt(collisions * (100 / ballCount));
+        collisions * (100 / ballCount); 
     }
     
     scoresObj = getHighScores();
@@ -289,10 +290,10 @@ function gameOver() {
     if (scoresObj == null) {
         if (collisions > 0) { document.getElementById("hScores").style.display = "block"; }
     }
-    else if (scoresObj.length < 10) {
+    else if (scoresObj.length < 5) {
         if (collisions > 0) { document.getElementById("hScores").style.display = "block"; }
     }
-    else if (scoresObj[9].score < collisions) {
+    else if (scoresObj[4].score < collisions) {
         if (collisions > 0) { document.getElementById("hScores").style.display = "block"; }
     }
     else {
