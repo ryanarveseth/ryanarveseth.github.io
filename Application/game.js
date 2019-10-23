@@ -360,6 +360,7 @@ function applyGravity() {
 
 function getHighScores() {
     var xhttp = new XMLHttpRequest();
+    console.log("getHighScores");
     var file = "gamedata.txt";
 
     xhttp.onreadystatechange = function () {
