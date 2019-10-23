@@ -282,9 +282,12 @@ function gameOver() {
     if (orangeAlive) {
         collisions *= 1.5;
         document.getElementById("score").innerHTML = "Score: " + parseInt(collisions * (100 / ballCount));
-        collisions * (100 / ballCount); 
+         
     }
     
+    // Normalize our score!
+    collisions *= (100 / ballCount);
+    collisions = parseInt(collisions);
     scoresObj = getHighScores();
 
     if (scoresObj == null) {
