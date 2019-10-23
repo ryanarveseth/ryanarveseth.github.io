@@ -378,7 +378,7 @@ function getHighScores() {
 
 function writeToFile(response) {
     console.log(response);
-    var fs = require("fs");
+    var fs = require('browserify-fs');
     fs.writeFile("gamedata.txt", JSON.stringify(response), (err) => {
         if (err) {
             return;
@@ -413,7 +413,7 @@ function addHighScores(name) {
     if (collisions > 0) {
         console.log("trying to add high scores...");
         var d = new Date();
-        var newRecord = { "name" : name, "score" : collisions, "date" : d.getMonth() + "/" + d.getDate() + "/" + d.getFullYear() };
+        var newRecord = { "name" : name, "score" : collisions, "date" : (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear() };
         
         if (scoresObj == null) {
             scoresObj = newRecord; 
