@@ -404,7 +404,9 @@ n.addEventListener("keyup", function () {
 
 
 function addHighScores(name) {
+    console.log("added high scores...");
     if (collisions > 0) {
+        console.log("trying to add high scores...");
         var d = new Date();
         var newRecord = { "name" : name, "score" : collisions, "date" : d.getMonth() + "/" + d.getDate() + "/" + d.getFullYear() };
         
@@ -413,7 +415,7 @@ function addHighScores(name) {
         } 
         else 
             scoresObj.push(newRecord);
-        
+        console.log(scoresObj);
         writeToFile(scoresObj);
     }
 }
