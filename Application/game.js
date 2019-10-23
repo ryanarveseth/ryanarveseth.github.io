@@ -286,8 +286,7 @@ function gameOver() {
     }
     
     // Normalize our score!
-    collisions *= (100 / ballCount);
-    collisions = parseInt(collisions);
+    collisions = parseInt(collisions * (100 / ballCount));
     scoresObj = getHighScores();
 
     if (scoresObj == null) {
