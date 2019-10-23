@@ -411,13 +411,14 @@ function addHighScores(name) {
         } 
         else 
             scoresObj.push(newRecord);
-        console.log(scoresObj);
+        
 
         scoresObj.sort((a, b) => (a.score > b.score) ? 1 : -1);
 
+        console.log(scoresObj);
         localStorage.setItem("scores", scoresObj);
 
-        writeToFile(scoresObj);
+      //  writeToFile(scoresObj);
     }
 }
 
