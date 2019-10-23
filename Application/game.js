@@ -355,27 +355,15 @@ function applyGravity() {
 }
 
 function getHighScores() {
-    var xhttp = new XMLHttpRequest();
-    console.log("getHighScores");
-    var file = "gamedata.txt";
-
-    xhttp.onreadystatechange = function () {
-        if (xhttp.readyState == 4) {
-            if (xhttp.status == 200 || xhttp.status == 0) {
-                var response = xhttp.responseText;
-                console.log(response);
-                if (response.length > 0)
-                    response = JSON.parse(response);
-                return response;
-            }
-        }
-    }
-    xhttp.open("GET", file, true);
-    xhttp.send();
+    if (localStorage.getItem("scores") == null)
+        return null;
+    
+    response = JSON.parse(localStorage.getItem("scores"));
+    return response;
 }
 
 
-
+/*
 function writeToFile(response) {
     console.log(response);
     var fs = require('browserify-fs');
@@ -385,7 +373,7 @@ function writeToFile(response) {
         };
     });
 }
-
+*/
 
 /*
 * Here is our example of the create / replace child.
@@ -424,6 +412,11 @@ function addHighScores(name) {
         else 
             scoresObj.push(newRecord);
         console.log(scoresObj);
+
+        scoresObj.sort((a, b) => (a.score > b.score) ? 1 : -1);
+
+        localStorage.setItem("scores", scoresObj);
+
         writeToFile(scoresObj);
     }
 }
