@@ -2,21 +2,15 @@
 var gravStrength;
 var blues = true;
 var blues_count = 0; 
-var pos;
-var blocks = [];
 var balls = [];
-var level = 1;
-var ball;
 var canvas = document.getElementById("gameCanvas");
 var ctx = document.getElementById("gameCanvas").getContext('2d');
 var collisions = 0;
 var ballCount;
 var speed;
 var countDown;
-var now;
 var timr;
-var nickname = null;
-var namesubmitted = false;
+var scoresObj; 
 
 function setVariables() {
     if (localStorage.getItem("speed") === null) {
@@ -182,7 +176,6 @@ function shoot(event) {
         timr = countDown - new Date().getTime();
 
         var c = document.getElementById("gameCanvas");
-        var rect = c.getBoundingClientRect();
         if (startingvx == 0 && startingvy == 0) {
 
             var dx = myGameArea.canvas.width / 2  - 6 - (pointer.x);
@@ -291,16 +284,17 @@ function gameOver() {
         document.getElementById("score").innerHTML = "Score: " + parseInt(collisions * (100 / ballCount));
     }
     
-    var objArr = getHighScores(collisions);
+    scoresObj = getHighScores();
 
-    if (collisions > 0) { document.getElementById("hScores").style.display = "block"; }
-    
-        waiting();
-        console.log("waiting...");
-
-    console.log(nickname);
-    var d = new Date();
-    var newRecord = { "name" : nickname, "score" : score, "date" : d.getMonth() + "/" + d.getDate() + "/" + d.getFullYear() };
+    if (scoresObj.length < 10) {
+        if (collisions > 0) { document.getElementById("hScores").style.display = "block"; }
+    }
+    else if (scoresObj[9].score < collisions) {
+        if (collisions > 0) { document.getElementById("hScores").style.display = "block"; }
+    }
+    else {
+        document.getElementById("playAgain").style.display = "block";
+    }
 
 }
 
@@ -390,12 +384,6 @@ function writeToFile(response) {
 }
 
 
-function waiting() { 
-    if (!namesubmitted)
-        setTimeout(waiting, 500);
-}
-
-
 /*
 * Here is our example of the create / replace child.
 * The user has to type in a name to submit their high score. 
@@ -408,23 +396,27 @@ n.addEventListener("keyup", function () {
     var button = document.createElement('button');
     button.innerText = 'Enter';
     button.id = "buttonSubmit";
-    button.onclick = function () { 
-        // No null names!
-        if (n.value != null) {
-            namesubmitted = true;
-            // And No cheating!
-            if (score > 0) { 
-                document.getElementById("hScores").style.display = "block";
-                nickname = n.value; 
-            }
-            else
-                document.getElementById("hScores").style.display = "block";
-        }
-    }
+    button.onclick = addHighScores(n.value);
+
     replaced.parentNode.replaceChild(button, replaced);
 });
 
 
+
+function addHighScores(name) {
+    if (collisions > 0) {
+        var d = new Date();
+        var newRecord = { "name" : name, "score" : collisions, "date" : d.getMonth() + "/" + d.getDate() + "/" + d.getFullYear() };
+        
+        if (scoresObj.length == 0) {
+            scoresObj = newRecord; 
+        } 
+        else 
+            scoresObj.push(newRecord);
+        
+        writeToFile(scoresObj);
+    }
+}
 
 function distanceNextFrame(a, b) {
     return Math.sqrt((a.x + a.vx - b.x - b.vx)**2 + (a.y + a.vy - b.y - b.vy)**2) - a.radius - b.radius;
