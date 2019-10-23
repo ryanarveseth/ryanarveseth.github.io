@@ -11,9 +11,11 @@ h2 {
     color: rgb(240,150,0);
     font-size: 40px;
     z-index: 0;
+    /*   Here is our animation  */
     animation: bounce 0.5s; 
     animation-iteration-count: infinite;
     animation-direction: alternate;
+    /****************************/
     width: 400px;
     margin: 0 auto;
     margin-top: 20px;
@@ -24,7 +26,8 @@ h2 {
 
 
 @keyframes bounce {
-    0%   { transform: translateY(30px);  }
+    0%    { transform: translateY(30px);  }
+
     100%  { transform: translateY(0); }
 }
 
@@ -101,7 +104,7 @@ a:hover {
     margin-right: auto;
     left: 0;
     right: 0;
-    top: 25%;
+    top: 15%;
     display: none;
 }
 
@@ -181,6 +184,20 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
     pointer-events: none;
+}
+.time {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    right: 5px;
+    left: 0;
+    width:310px;
+    color: #dddddd;
+    margin-top: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    pointer-events: none;
+    text-align: right;
 }
 .rangeSlider {
     -webkit-appearance: none;

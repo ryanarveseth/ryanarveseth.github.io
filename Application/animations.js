@@ -37,7 +37,7 @@ function openMods() {
     }
     else {
         // set blues to the local storage variable
-        document.getElementById("killer-blues").checked = localStorage.getItem("blues") == "true" ? true : false;
+        //document.getElementById("killer-blues").checked = localStorage.getItem("blues") == "true" ? true : false;
         // Set the gravity amount
         document.getElementById("gravRange").value = localStorage.getItem("gravity");
         gravOut.innerHTML = localStorage.getItem("gravity");
@@ -62,12 +62,12 @@ function openMods() {
 }
 
 function submitMods() {
-    var blues = document.getElementById("killer-blues").checked ? true : false;
+    //var blues = document.getElementById("killer-blues").checked ? true : false;
     var gravity = document.getElementById("gravRange").value;
     var balls = document.getElementById("ballCountSlide").value;
     var speed = document.getElementById("ballSpeedSlide").value;
 
-    localStorage.setItem("blues", blues);
+    //localStorage.setItem("blues", blues);
     localStorage.setItem("gravity", gravity);
     localStorage.setItem("balls", balls);
     localStorage.setItem("speed", speed);

@@ -9,10 +9,12 @@
 <body onload="game();">
     <h2 class="txtAnimation">BOUNCE</h2>
     <div class="over">
-        <div id="score" class="score"></div>
+        <div id="score" class="score">Score: 0</div>
+        <div id="timeRemaining" class="time"></div>
         <div id="settings" class="settings" onclick="openMods();">&#9881;</div>
         <canvas id="gameCanvas" style="display:block;" width="320" height="480"></canvas>
         <div class="menu" id="playAgain">
+            <h2 style="width:240px;">Game Over!</h2>
             <a href="game.html">Play Again</a>
             <a href="index.html">Go Home</a>
         </div>
@@ -24,13 +26,13 @@
                             <th colspan="2" style="text-decoration: underline; font-size:20px;">Modifiers</th>
                         </tr>
                         <tr>
-                            <td style="width:70%;"><label for="killer-blues">'Killer' Blues</label></td>
+                            <!--<td style="width:70%;"><label for="killer-blues">'Killer' Blues</label></td>
                             <td>
                                 <label class="switch">
                                     <input type="checkbox" id="killer-blues" checked="checked">
                                     <span class="slider round"></span>
                                 </label>
-                            </td>
+                            </td>-->
                         </tr>
                         <tr>
                             <td colspan="2">

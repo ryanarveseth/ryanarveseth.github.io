@@ -18,12 +18,12 @@ var timr;
 
 function setVariables() {
     if (localStorage.getItem("speed") === null) {
-        blues = document.getElementById("killer-blues").checked ? true : false;
+        //blues = document.getElementById("killer-blues").checked ? true : false;
         gravStrength = document.getElementById("gravRange").value;
         ballCount = document.getElementById("ballCountSlide").value;
         speed = document.getElementById("ballSpeedSlide").value;
     } else {
-        blues = localStorage.getItem("blues");
+        //blues = localStorage.getItem("blues");
         gravStrength = localStorage.getItem("gravity");
         ballCount = localStorage.getItem("balls");
         speed = localStorage.getItem("speed");
@@ -74,23 +74,44 @@ var pointer =  {
         // Make the line visible
         ctx.stroke();
     },
-    reposition : function(event) {
+    reposition : function(e) {
+
+        e.preventDefault();
+
+        var touchstart = e.type === 'touchstart' || e.type === 'touchmove',
+            e = touchstart ? e.originalEvent : e,
+            pageX = touchstart ? e.targetTouches[0].pageX : e.pageX,
+            pageY = touchstart ? e.targetTouches[0].pageY : e.pageY;
+
+            var rect = canvas.getBoundingClientRect();
+            pointer.x = pageX - rect.left;
+            pointer.y = pageY - rect.top;
+
         /*if (event == "touchmove") {
             var tchObj = event.changedTouches[0];
             var rect = canvas.getBoundingClientRect();
             pointer.x = tchObj.clientX - rect.left;
             pointer.y = tchObj.clientY - rect.top;
         }
-        else {*/
+        else {
             var rect = canvas.getBoundingClientRect();
             pointer.x = event.clientX - rect.left;
-            pointer.y = event.clientY - rect.top;
+            pointer.y = event.clientY - rect.top; */
        // }
        // event.preventDefault();
     }
 } 
 
-
+/* 
+* This Ball class allows us to create Ball objects...
+* We'll have an array of Balls in the game.
+* draw() : draws the ball on the screen
+* kill() : this is what causes a ball to 'disappear'
+* getSpeed() : returns the speed of the ball
+* getAngle() : returns the angle the ball is traveling in
+* onGround() : returns if the ball is on the ground 
+*
+*/
 class Ball {
     constructor(x, y, vx, vy, b, rad) {         
         this.x = x;
@@ -140,7 +161,9 @@ class Ball {
         return Math.sqrt(this.vx * this.vx + this.vy * this.vy);
     }
     onGround() {
-        return (this.y + this.radius >= canvas.height)
+        var x = (this.y + this.radius >= canvas.height);
+        if (x == true && this.started) { this.y -= 20; } 
+        return x;
     }
 }
 
@@ -148,28 +171,21 @@ canvas.addEventListener("touchstart", pointer.reposition, true);
 canvas.addEventListener("touchmove", pointer.reposition, true);
 canvas.addEventListener("mousemove", pointer.reposition, true);
 
-
-
 var startingvx = 0;
 var startingvy = 0;
 
 function shoot(event) {
     if (startingvx == 0 && startingvy == 0) {
         setVariables();
-        countDown = new Date().setSeconds(new Date().getSeconds() + 10);
-        timr = countdown - Date().getTime();
+        countDown = new Date().setSeconds(new Date().getSeconds() + 30);
+        timr = countDown - new Date().getTime();
 
         var c = document.getElementById("gameCanvas");
         var rect = c.getBoundingClientRect();
         if (startingvx == 0 && startingvy == 0) {
-            if (event.type == "touchend") {
-                var dx = myGameArea.canvas.width / 2  - 6 - event.touches[0].pageX;
-                var dy = myGameArea.canvas.height - 6 - event.touches[0].pageY;
-            }
-            else if (event.type == "click") {
-                var dx = myGameArea.canvas.width / 2  - 6 - (event.clientX - rect.left);
-                var dy = myGameArea.canvas.height - 6 - (event.clientY - rect.top);
-            }
+
+            var dx = myGameArea.canvas.width / 2  - 6 - (pointer.x);
+            var dy = myGameArea.canvas.height - 6 - (pointer.y);
             var angle = Math.atan2(dy, dx);
 
             startingvx = speed * 2.5 * -Math.cos(angle);
@@ -187,9 +203,17 @@ var times = 0;
 
 function updateGame() { 
     myGameArea.clear();
-    timr = countdown - Date().getTime();
+    if (countDown == null) 
+        timr = 30000;
+    else
+        timr = countDown - new Date().getTime();
 
-    if (timr < 0) { gameOver(); }
+    document.getElementById("timeRemaining").innerHTML = (Math.round(((timr) / 1000) * 100) / 100).toFixed(2);
+
+    if (timr < 0) { 
+        document.getElementById("timeRemaining").innerHTML = (Math.round(((0) / 1000) * 100) / 100).toFixed(2);
+        gameOver(); 
+    }
 
     if (startingvx != 0 || startingvy != 0) {
         if (balls.length == 0) {
@@ -235,7 +259,7 @@ function updateGame() {
         else
             times++;
 
-        document.getElementById("score").innerHTML = "Score: " + (collisions * (100 / ballCount));
+        document.getElementById("score").innerHTML = "Score: " + parseInt(collisions * (100 / ballCount));
         applyGravity();
         ballCollision();
     }
@@ -247,10 +271,25 @@ function updateGame() {
         gameOver();
 }
 
+/*
+* gameOver is what is called when the game is over! 
+* clear the interval, so it stops refreshing at x_fps
+* if there are no orange balls, 
+*/
 function gameOver() {
     myGameArea.clear();
     clearInterval(myGameArea.interval);
+    var orangeAlive = false;
+    for (b in balls) {
+        if ((!b.isBlue) && b.alive && b.started)
+            orangeAlive = true;
+    }
 
+    if (orangeAlive) {
+        collisions *= 1.5;
+        document.getElementById("score").innerHTML = "Score: " + parseInt(collisions * (100 / ballCount));
+    }
+    
     document.getElementById("playAgain").style.display = "inline";
     
 }
@@ -278,7 +317,6 @@ function ballCollision() {
                             if (balls[i].started && balls[x].started) {
                                 collisions++;
                                 if (balls[i].isBlue && balls[x].isBlue) {
-                                    balls[i].kill();
                                     balls[x].kill();
                                 } else if (balls[i].isBlue && !balls[x].isBlue) {
                                     balls[x].isBlue = true;
