@@ -253,7 +253,8 @@ function updateGame() {
         else
             times++;
 
-        document.getElementById("score").innerHTML = "Score: " + parseInt(collisions * (100 / ballCount));
+        var c = parseInt(collisions * (100 / ballCount));
+        document.getElementById("score").innerHTML = "Score: " + c;
         applyGravity();
         ballCollision();
     }
@@ -281,15 +282,14 @@ function gameOver() {
 
     if (orangeAlive == true) {
         collisions *= 1.5;
-        document.getElementById("score").innerHTML = "Score: " + parseInt(collisions * (100 / ballCount));
+        var c = parseInt(collisions * (100 / ballCount));
+        document.getElementById("score").innerHTML = "Score: " + c;
          
     }
     
     // Normalize our score!
-    console.log(ballCount);
-    console.log(collisions);
-    collisions = parseInt(collisions * (100 / ballCount));
-    console.log(collisions);
+    var c = parseInt(collisions * (100 / ballCount));
+    collisions = c;
     scoresObj = getHighScores();
 
     if (scoresObj == null) {
