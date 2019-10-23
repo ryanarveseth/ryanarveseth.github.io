@@ -10,7 +10,7 @@ var ballCount;
 var speed;
 var countDown;
 var timr;
-var scoresObj; 
+var scoresObj = []; 
 
 function setVariables() {
     if (localStorage.getItem("speed") === null) {
@@ -397,22 +397,21 @@ n.addEventListener("keyup", function () {
 
 
 function addHighScores(name) {
-    console.log("added high scores...");
     if (collisions > 0) {
-        console.log("trying to add high scores...");
         var d = new Date();
         var newRecord = { "name" : name, "score" : collisions, "date" : (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear() };
         
         if (scoresObj == null) {
-            scoresObj = newRecord; 
+            scoresObj.push(newRecord);
+            //scoresObj = newRecord; 
         }
         else if (scoresObj.length == 0) {
-            scoresObj = newRecord; 
+            //scoresObj = newRecord;
+            scoresObj.push(newRecord); 
         } 
         else 
             scoresObj.push(newRecord);
         
-
         scoresObj.sort((a, b) => (a.score > b.score) ? 1 : -1);
 
         console.log(scoresObj);
