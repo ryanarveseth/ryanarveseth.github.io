@@ -286,7 +286,10 @@ function gameOver() {
     
     scoresObj = getHighScores();
 
-    if (scoresObj.length < 10) {
+    if (scoresObj == null) {
+        if (collisions > 0) { document.getElementById("hScores").style.display = "block"; }
+    }
+    else if (scoresObj.length < 10) {
         if (collisions > 0) { document.getElementById("hScores").style.display = "block"; }
     }
     else if (scoresObj[9].score < collisions) {
