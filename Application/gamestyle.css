@@ -14,7 +14,7 @@ h2 {
     /*   Here is our animation  */
     animation: bounce 0.5s; 
     animation-iteration-count: infinite;
-    animation-direction: alternate;
+    animation-direction: alternate; 
     /****************************/
     width: 400px;
     margin: 0 auto;
@@ -27,7 +27,6 @@ h2 {
 
 @keyframes bounce {
     0%    { transform: translateY(30px);  }
-
     100%  { transform: translateY(0); }
 }
 
@@ -95,6 +94,18 @@ a:hover {
     position: relative;
     top: -486px;
 }
+.hScores {
+    width: 326px;
+    height: 486px;
+    position: relative;
+    top: -486px;
+}
+.hScores table {
+    font-family: fantasy;
+    margin: 0 auto;
+    color: white;
+    letter-spacing: 1.5px;
+}
 #playAgain {
     background: rgba(0, 0, 0, 0);
     width: 240px;
@@ -108,7 +119,7 @@ a:hover {
     display: none;
 }
 
-
+input
 .switch {
     position: relative;
     display: inline-block;

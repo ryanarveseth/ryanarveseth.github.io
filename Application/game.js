@@ -1,6 +1,6 @@
 
 var gravStrength;
-var blues;
+var blues = true;
 var blues_count = 0; 
 var pos;
 var blocks = [];
@@ -15,6 +15,8 @@ var speed;
 var countDown;
 var now;
 var timr;
+var nickname = "";
+var namesubmitted = false;
 
 function setVariables() {
     if (localStorage.getItem("speed") === null) {
@@ -33,7 +35,6 @@ function setVariables() {
 
 
 function game() {
-    //ball = new ball(canvas.width / 2 + 3,canvas.height - 6)
     myGameArea.start();
 }
 
@@ -208,10 +209,10 @@ function updateGame() {
     else
         timr = countDown - new Date().getTime();
 
-    document.getElementById("timeRemaining").innerHTML = (Math.round(((timr) / 1000) * 100) / 100).toFixed(2);
+    document.getElementById("timeRemaining").innerHTML = "Time: " + (Math.round(((timr) / 1000) * 100) / 100).toFixed(2);
 
     if (timr < 0) { 
-        document.getElementById("timeRemaining").innerHTML = (Math.round(((0) / 1000) * 100) / 100).toFixed(2);
+        document.getElementById("timeRemaining").innerHTML = "Time: " + (Math.round(((0) / 1000) * 100) / 100).toFixed(2);
         gameOver(); 
     }
 
@@ -290,8 +291,17 @@ function gameOver() {
         document.getElementById("score").innerHTML = "Score: " + parseInt(collisions * (100 / ballCount));
     }
     
-    document.getElementById("playAgain").style.display = "inline";
+    var objArr = getHighScores(collisions);
+
+    if (collisions) { document.getElementById("hScores").style.display = "block"; }
     
+    while (nickname = "") {
+
+    }
+    console.log(nickname);
+    var d = new Date();
+    var newRecord = { "name" : nickname, "score" : score, "date" : d.getMonth() + "/" + d.getDate() + "/" + d.getFullYear() };
+
 }
 
 function ballCollision() {
@@ -345,8 +355,75 @@ function applyGravity() {
             balls[b].y-= 10;
         }
     }
-
 }
+
+function getHighScores() {
+    var xhttp = new XMLHttpRequest();
+    var file = "gamedata.txt";
+
+    xhttp.onreadystatechange = function () {
+        if (xhttp.readyState == 4) {
+            if (xhttp.status == 200 || xhttp.status == 0) {
+                var response = xhttp.responseText;
+                console.log(response);
+                if (response.length > 0)
+                    response = JSON.parse(response);
+                return response;
+            }
+        }
+    }
+    xhttp.open("GET", file, true);
+    xhttp.send();
+}
+
+
+
+function writeToFile(response) {
+    console.log(response);
+    var fs = require("fs");
+    fs.writeFile("gamedata.txt", JSON.stringify(response), (err) => {
+        if (err) {
+            return;
+        };
+    });
+}
+
+
+function waiting() { 
+    console.log(namesubmitted);
+    if (!namesubmitted)
+        setTimeout(waiting, 150);
+}
+
+
+/*
+* Here is our example of the create / replace child.
+* The user has to type in a name to submit their high score. 
+*/
+var n = document.getElementById("name");    
+
+n.addEventListener("keyup", function () {
+    // create a new button to submit our name!
+    var replaced = document.getElementById("buttonSubmit");
+    var button = document.createElement('button');
+    button.innerText = 'Enter';
+    button.id = "buttonSubmit";
+    button.onclick = function () { 
+        // No null names!
+        if (n.value != null) {
+            namesubmitted = true;
+            // And No cheating!
+            if (score > 0) { 
+                document.getElementById("hScores").style.display = "block";
+                nickname = n.value; 
+            }
+            else
+                document.getElementById("hScores").style.display = "block";
+        }
+    }
+    replaced.parentNode.replaceChild(button, replaced);
+});
+
 
 
 function distanceNextFrame(a, b) {
