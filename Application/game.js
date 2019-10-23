@@ -296,8 +296,9 @@ function gameOver() {
     if (collisions) { document.getElementById("hScores").style.display = "block"; }
     
     while (nickname = "") {
-
+        console.log("waiting...");
     }
+
     console.log(nickname);
     var d = new Date();
     var newRecord = { "name" : nickname, "score" : score, "date" : d.getMonth() + "/" + d.getDate() + "/" + d.getFullYear() };
