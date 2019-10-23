@@ -12,7 +12,9 @@ var ctx = document.getElementById("gameCanvas").getContext('2d');
 var collisions = 0;
 var ballCount;
 var speed;
-
+var countDown;
+var now;
+var timr;
 
 function setVariables() {
     if (localStorage.getItem("speed") === null) {
@@ -152,8 +154,11 @@ var startingvx = 0;
 var startingvy = 0;
 
 function shoot(event) {
-    setVariables();
     if (startingvx == 0 && startingvy == 0) {
+        setVariables();
+        countDown = new Date().setSeconds(new Date().getSeconds() + 10);
+        timr = countdown - Date().getTime();
+
         var c = document.getElementById("gameCanvas");
         var rect = c.getBoundingClientRect();
         if (startingvx == 0 && startingvy == 0) {
@@ -182,6 +187,10 @@ var times = 0;
 
 function updateGame() { 
     myGameArea.clear();
+    timr = countdown - Date().getTime();
+
+    if (timr < 0) { gameOver(); }
+
     if (startingvx != 0 || startingvy != 0) {
         if (balls.length == 0) {
             
@@ -226,7 +235,7 @@ function updateGame() {
         else
             times++;
 
-        document.getElementById("score").innerHTML = "Collisions: " + collisions;
+        document.getElementById("score").innerHTML = "Score: " + (collisions * (100 / ballCount));
         applyGravity();
         ballCollision();
     }
