@@ -417,7 +417,7 @@ function addHighScores(name) {
         
 
         console.log(scoresObj);
-        localStorage.setItem("scores", scoresObj);
+        localStorage.setItem("scores", scoresObj.stringify());
 
       //  writeToFile(scoresObj);
     }
