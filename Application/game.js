@@ -412,7 +412,10 @@ function addHighScores(name) {
         else 
             scoresObj.push(newRecord);
         
-        scoresObj.sort((a, b) => (a.score > b.score) ? 1 : -1);
+        if (scoresObj.length > 1) {
+            scoresObj.sort((a, b) => (a.score > b.score) ? 1 : -1);
+        }
+        
 
         console.log(scoresObj);
         localStorage.setItem("scores", scoresObj);
