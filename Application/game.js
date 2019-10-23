@@ -293,12 +293,10 @@ function gameOver() {
     
     var objArr = getHighScores(collisions);
 
-    if (collisions) { document.getElementById("hScores").style.display = "block"; }
+    if (collisions > 0) { document.getElementById("hScores").style.display = "block"; }
     
-    while (nickname == null) {
         waiting();
         console.log("waiting...");
-    }
 
     console.log(nickname);
     var d = new Date();
@@ -393,9 +391,8 @@ function writeToFile(response) {
 
 
 function waiting() { 
-    console.log(namesubmitted);
     if (!namesubmitted)
-        setTimeout(waiting, 150);
+        setTimeout(waiting, 500);
 }
 
 
