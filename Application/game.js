@@ -417,7 +417,7 @@ function addHighScores(name) {
 
         console.log(scoresObj);
 
-        localStorage.setItem("scores", scoresObj.stringify());
+        localStorage.setItem("scores", JSON.stringify(scoresObj));
         // hide the name box
         document.getElementById("hScores").style.display = "none";
         // show the replay box
