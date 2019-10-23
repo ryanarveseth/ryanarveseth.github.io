@@ -399,7 +399,9 @@ n.addEventListener("keyup", function () {
     var button = document.createElement('button');
     button.innerText = 'Enter';
     button.id = "buttonSubmit";
-    button.onclick = addHighScores(n.value);
+    button.onclick = function() { 
+        addHighScores(n.value);
+    }
 
     replaced.parentNode.replaceChild(button, replaced);
 });
@@ -413,7 +415,10 @@ function addHighScores(name) {
         var d = new Date();
         var newRecord = { "name" : name, "score" : collisions, "date" : d.getMonth() + "/" + d.getDate() + "/" + d.getFullYear() };
         
-        if (scoresObj.length == 0) {
+        if (scoresObj == null) {
+            scoresObj = newRecord; 
+        }
+        else if (scoresObj.length == 0) {
             scoresObj = newRecord; 
         } 
         else 
