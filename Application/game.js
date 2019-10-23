@@ -395,7 +395,6 @@ n.addEventListener("keyup", function () {
 });
 
 
-
 function addHighScores(name) {
     if (collisions > 0) {
         var d = new Date();
@@ -417,8 +416,12 @@ function addHighScores(name) {
         
 
         console.log(scoresObj);
-        localStorage.setItem("scores", scoresObj.stringify());
 
+        localStorage.setItem("scores", scoresObj.stringify());
+        // hide the name box
+        document.getElementById("hScores").style.display = "none";
+        // show the replay box
+        document.getElementById("playAgain").style.display = "block";
       //  writeToFile(scoresObj);
     }
 }
