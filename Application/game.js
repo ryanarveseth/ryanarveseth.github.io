@@ -402,11 +402,10 @@ function addHighScores(name) {
         var newRecord = { "name" : name, "score" : collisions, "date" : (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear() };
         
         if (scoresObj == null) {
+            scoresObj = [];
             scoresObj.push(newRecord);
-            //scoresObj = newRecord; 
         }
         else if (scoresObj.length == 0) {
-            //scoresObj = newRecord;
             scoresObj.push(newRecord); 
         } 
         else 
