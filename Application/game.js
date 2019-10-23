@@ -411,7 +411,7 @@ function addHighScores(name) {
             scoresObj.push(newRecord);
         
         if (scoresObj.length > 1) {
-            scoresObj.sort((a, b) => (a.score > b.score) ? 1 : -1);
+            scoresObj.sort((a, b) => (a.score < b.score) ? 1 : -1);
         }
         
 
