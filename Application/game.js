@@ -296,6 +296,7 @@ function gameOver() {
     if (collisions) { document.getElementById("hScores").style.display = "block"; }
     
     while (nickname == null) {
+        waiting();
         console.log("waiting...");
     }
 
