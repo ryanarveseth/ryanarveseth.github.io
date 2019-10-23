@@ -379,7 +379,7 @@ function writeToFile(response) {
 * Here is our example of the create / replace child.
 * The user has to type in a name to submit their high score. 
 */
-var n = document.getElementById("name");    
+var n = document.getElementById("nickname");    
 
 n.addEventListener("keyup", function () {
     // create a new button to submit our name!
