@@ -1,3 +1,17 @@
+/* CIT 261 Fluencies Passed off in this project
+ *  O - Javascript - Loops, Conditional Statements, Functions, Variables, Parameters, Arrays, Associative Arrays
+ *  O - JavaScript Objects - Object creation functions, Inheritance, Properties, Methods, Instantiation
+ *  O - JSON - Parse / Stringify
+ *  X - AJAX - Requesting a JSON file
+ *  O - Local Storage - API, Storing and retrieving Simple Data, Arrays, Associative Arrays, and Objects
+ *  O - DOM Manipulation - Using createElement, appendChild, insertBefore, removeChild, etc.
+ *  O - CSS Class Properties - Manipulating using JavaScript
+ *  O - CSS3 Transitions and Animations - and triggering them with JavaScript
+ *  O - JavaScript Events - Standard JS Events Including those for Mobile Devices (Ex. onTouchBegin, onLoad, etc) 
+ *      and animation and transition events
+ *  O - HTML5 Tags - Video, audio, and canvas
+ *  X - CSS3 Transitions (1-3?)
+ */
 
 var gravStrength;
 var blues = true;
@@ -81,23 +95,11 @@ var pointer =  {
             var rect = canvas.getBoundingClientRect();
             pointer.x = pageX - rect.left;
             pointer.y = pageY - rect.top;
-
-        /*if (event == "touchmove") {
-            var tchObj = event.changedTouches[0];
-            var rect = canvas.getBoundingClientRect();
-            pointer.x = tchObj.clientX - rect.left;
-            pointer.y = tchObj.clientY - rect.top;
-        }
-        else {
-            var rect = canvas.getBoundingClientRect();
-            pointer.x = event.clientX - rect.left;
-            pointer.y = event.clientY - rect.top; */
-       // }
-       // event.preventDefault();
     }
 } 
 
-/* 
+
+/*  Ball is an object (well, a Class FOR objects)
 * This Ball class allows us to create Ball objects...
 * We'll have an array of Balls in the game.
 * draw() : draws the ball on the screen
@@ -169,7 +171,7 @@ canvas.addEventListener("mousemove", pointer.reposition, true);
 var startingvx = 0;
 var startingvy = 0;
 
-function shoot(event) {
+function shoot() {
     if (startingvx == 0 && startingvy == 0) {
         setVariables();
         countDown = new Date().setSeconds(new Date().getSeconds() + 30);
@@ -284,9 +286,12 @@ function gameOver() {
         collisions *= 1.5;
         var c = parseInt(collisions * (100 / ballCount));
         document.getElementById("score").innerHTML = "Score: " + c;
-         
     }
     
+   
+    /*
+    * Fluency evidence: Updating the DOM, css styling with Javascrip
+    */
     // Normalize our score!
     var c = parseInt(collisions * (100 / ballCount));
     collisions = c;
@@ -307,6 +312,9 @@ function gameOver() {
 
 }
 
+/*
+* Fluency evidence: functions, loops, arrays
+*/
 function ballCollision() {
     for (var i = 0; i < balls.length; i++) {
         if (balls[i].alive)
@@ -348,6 +356,11 @@ function ballCollision() {
     }
 }
 
+
+
+/*
+* Fluency evidence: Javascript Loops, arrays
+*/
 function applyGravity() {
     for (var b in balls) {
         if (balls[b].onGround() == false) {
@@ -360,6 +373,11 @@ function applyGravity() {
     }
 }
 
+
+
+/*
+* Fluency evidence: JSON
+*/
 function getHighScores() {
     if (localStorage.getItem("scores") == null)
         return [];
@@ -369,17 +387,6 @@ function getHighScores() {
 }
 
 
-/*
-function writeToFile(response) {
-    console.log(response);
-    var fs = require('browserify-fs');
-    fs.writeFile("gamedata.txt", JSON.stringify(response), (err) => {
-        if (err) {
-            return;
-        };
-    });
-}
-*/
 
 /*
 * Here is our example of the create / replace child.
@@ -387,6 +394,9 @@ function writeToFile(response) {
 */
 var n = document.getElementById("nickname");    
 
+/* Adds an event listener to the nickname inputbox (displays the button!)
+ * Fluencies: DOM Manipulation
+ */
 n.addEventListener("keyup", function () {
     // create a new button to submit our name!
     var replaced = document.getElementById("buttonSubmit");
@@ -396,11 +406,13 @@ n.addEventListener("keyup", function () {
     button.onclick = function() { 
         addHighScores(n.value);
     }
-
     replaced.parentNode.replaceChild(button, replaced);
 });
 
 
+/* Adds your high score to the list of high scores! 
+* Fluencies : JavaScript Objects, JavaScript, DOM Manipulation
+*/
 function addHighScores(name) {
     if (collisions > 0) {
         var d = new Date();
@@ -420,9 +432,6 @@ function addHighScores(name) {
             scoresObj.sort((a, b) => (a.score < b.score) ? 1 : -1);
         }
         
-
-        console.log(scoresObj);
-
         localStorage.setItem("scores", JSON.stringify(scoresObj));
         // hide the name box
         document.getElementById("hScores").style.display = "none";
