@@ -26,6 +26,7 @@ var countDown;
 var timr;
 var scoresObj = []; 
 
+// this function grabs the local storage variables
 function setVariables() {
     if (localStorage.getItem("speed") === null) {
         //blues = document.getElementById("killer-blues").checked ? true : false;
@@ -57,7 +58,7 @@ var myGameArea = {
     }
 }
 
-
+// here's our pointer object
 var pointer =  {
     x : 0,
     y : 0,
@@ -107,7 +108,6 @@ var pointer =  {
 * getSpeed() : returns the speed of the ball
 * getAngle() : returns the angle the ball is traveling in
 * onGround() : returns if the ball is on the ground 
-*
 */
 class Ball {
     constructor(x, y, vx, vy, b, rad) {         
@@ -164,6 +164,7 @@ class Ball {
     }
 }
 
+// touchstart, touchmove, and mousemove update the pointer's location
 canvas.addEventListener("touchstart", pointer.reposition, true);
 canvas.addEventListener("touchmove", pointer.reposition, true);
 canvas.addEventListener("mousemove", pointer.reposition, true);
@@ -197,6 +198,7 @@ canvas.addEventListener("click", shoot);
 var iter = 1;
 var times = 0;
 
+// Set a 30 second timer (once the balls have been shot)
 function updateGame() { 
     myGameArea.clear();
     if (countDown == null) 
