@@ -339,12 +339,19 @@ function ballCollision() {
                         if (balls[i].vx != dx1F || balls[i].vy != dy1F || balls[x].vx != dx2F || balls[x].vy != dy2F)
                             if (balls[i].started && balls[x].started) {
                                 collisions++;
+                                
                                 if (balls[i].isBlue && balls[x].isBlue) {
+                                    document.getElementById("bounce1").play();
                                     balls[x].kill();
                                 } else if (balls[i].isBlue && !balls[x].isBlue) {
+                                    document.getElementById("bounce2").play();
                                     balls[x].isBlue = true;
                                 } else if (balls[x].isBlue && !balls[i].isBlue) {
                                     balls[i].isBlue = true;
+                                    document.getElementById("bounce2").play();
+                                }
+                                else {
+                                    document.getElementById("bounce").play();
                                 }
                             }
                             
