@@ -300,23 +300,29 @@ function gameOver() {
     scoresObj = getHighScores();
 
     if (scoresObj == null) {
-        if (collisions > 0) { document.getElementById("hScores").style.display = "block"; }
+        if (collisions > 0) {
+            document.getElementById("hScores").style.display = "block"; 
+            document.getElementById("hScores").focus();
+        }
     }
     else if (scoresObj.length < 5) {
-        if (collisions > 0) { document.getElementById("hScores").style.display = "block"; }
+        if (collisions > 0) { 
+            document.getElementById("hScores").style.display = "block"; 
+            document.getElementById("hScores").focus();
+        }
     }
     else if (scoresObj[4].score < collisions) {
-        if (collisions > 0) { document.getElementById("hScores").style.display = "block"; }
+        if (collisions > 0) { 
+            document.getElementById("hScores").style.display = "block"; 
+            document.getElementById("hScores").focus();
+        }
     }
     else {
         document.getElementById("playAgain").style.display = "block";
     }
-
 }
 
-/*
-* Fluency evidence: functions, loops, arrays
-*/
+/* This function handles ball collisions and sounds! */ 
 function ballCollision() {
     for (var i = 0; i < balls.length; i++) {
         if (balls[i].alive)
@@ -341,9 +347,11 @@ function ballCollision() {
                                 collisions++;
                                 
                                 if (balls[i].isBlue && balls[x].isBlue) {
+                                    document.getElementById("bounce1").playbackRate = 4;
                                     document.getElementById("bounce1").play();
                                     balls[x].kill();
                                 } else if (balls[i].isBlue && !balls[x].isBlue) {
+                                    document.getElementById("bounce2").playbackRate = 4;
                                     document.getElementById("bounce2").play();
                                     balls[x].isBlue = true;
                                 } else if (balls[x].isBlue && !balls[i].isBlue) {
@@ -351,6 +359,7 @@ function ballCollision() {
                                     document.getElementById("bounce2").play();
                                 }
                                 else {
+                                    document.getElementById("bounce").playbackRate = 4;
                                     document.getElementById("bounce").play();
                                 }
                             }
@@ -375,10 +384,6 @@ function applyGravity() {
         if (balls[b].onGround() == false) {
             balls[b].vy += 0.01 * gravStrength;
         }   
-       // console.log(b, balls[b].y);
-        if (balls[b].y > myGameArea.canvas.height) {
-            balls[b].y-= 10;
-        }
     }
 }
 
@@ -392,9 +397,9 @@ function getHighScores() {
         return [];
     
     response = JSON.parse(localStorage.getItem("scores"));
+    console.log(response);
     return response;
 }
-
 
 
 /*
@@ -407,6 +412,7 @@ var n = document.getElementById("nickname");
  * Fluencies: DOM Manipulation
  */
 n.addEventListener("keyup", function () {
+    document.getElementById("remainingChars").innerHTML = 8 - n.value.length;
     // create a new button to submit our name!
     var replaced = document.getElementById("buttonSubmit");
     var button = document.createElement('button');
@@ -426,17 +432,24 @@ function addHighScores(name) {
     if (collisions > 0) {
         var d = new Date();
         var newRecord = { "name" : name, "score" : collisions, "date" : (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear() };
-        
         if (scoresObj == null) {
             scoresObj = [];
             scoresObj.push(newRecord);
         }
-        else if (scoresObj.length == 0) {
+        else if (scoresObj.length < 5) {
             scoresObj.push(newRecord); 
         } 
-        else 
-            scoresObj.push(newRecord);
-        
+        else {
+            if (scoresObj[4].score <= collisions) {
+                scoresObj[4].name = newRecord.name;
+                scoresObj[4].score = newRecord.score;
+                scoresObj[4].date = newRecord.date;
+            }
+
+        }
+            
+        console.log(scoresObj);
+
         if (scoresObj.length > 1) {
             scoresObj.sort((a, b) => (a.score < b.score) ? 1 : -1);
         }
@@ -446,7 +459,6 @@ function addHighScores(name) {
         document.getElementById("hScores").style.display = "none";
         // show the replay box
         document.getElementById("playAgain").style.display = "block";
-      //  writeToFile(scoresObj);
     }
 }
 

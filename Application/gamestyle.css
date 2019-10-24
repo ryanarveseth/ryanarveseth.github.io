@@ -42,6 +42,25 @@ h2 {
     right: 0;
     border-radius: 50%;
 }
+
+.home {
+    width: 35px;
+    font-size: 35px;
+    height: 35px;
+    text-align: center;
+    color: white;
+    font-weight: bolder;
+    position: absolute;
+    top: -35px;
+    right: 33px;
+    border-radius: 50%;
+}
+.home:hover {
+    transition: .2s;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
 .settings:hover {
     transition: .2s;
     transform: scale(1.1);
@@ -81,13 +100,25 @@ a:hover {
     width: 240px;
     text-align: center;
     position: relative;
-    top: 30px; 
+    top: 50px; 
     margin-left: auto;
     margin-right: auto;
     padding: 10px;
     color: black;
     border-radius: 10px;
 }
+.startMenu {
+    width: 240px;
+    text-align: center;
+    position: relative;
+    top: 50px; 
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+}
+
 .overlay {
     width: 326px;
     height: 486px;
@@ -106,6 +137,17 @@ a:hover {
     color: white;
     letter-spacing: 1.5px;
 }
+.highScore {
+    top: 50px;
+    position: relative;
+    top: 50px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+.remainingChars {
+    right: 15px;
+    position: relative;
+}
 #playAgain {
     background: rgba(0, 0, 0, 0);
     width: 240px;
@@ -118,7 +160,20 @@ a:hover {
     top: 15%;
     display: none;
 }
-
+.scoreTable {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 1px;
+    font-size: 15px;
+}
+table.scoreTable {
+    border-collapse: collapse;
+    margin: 0 auto;
+    position: relative;
+    top: 25px;
+}
+table.scoreTable th, table.scoreTable td {
+    border-bottom: 1px solid #888888;
+}
 input
 .switch {
     position: relative;
@@ -168,6 +223,40 @@ input:checked + .slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
+}
+
+input[type="text"] {
+    font-size: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background: none;
+    color: white;
+    border: none;
+    border-bottom: 2px solid white;
+}
+input[type="text"]:focus {
+    outline: none;
+    border-bottom: 2px solid white;
+}
+button {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border: none;
+    letter-spacing: 2px;
+    text-shadow: 2px 1px #888888;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, .33);
+    padding: 20px;
+    width: 100px;
+    border-radius: 40px;
+    background: rgb(240, 150, 0);
+    font-size: 25px;
+    font-weight: bolder;
+    text-decoration: none;
+    color: white;
+}
+button:hover {
+    background: white;
+    color: rgb(240,150,0);
+    transition: .2s; 
 }
 
 /* Rounded sliders */

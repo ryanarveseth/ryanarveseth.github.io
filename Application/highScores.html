@@ -4,21 +4,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="gamestyle.css">
     <script src="animations.js"></script>
+    <script src="highScores.js"></script>
     <title>Bounce</title>
 </head>
-<body>
+<body onload="displayScores();">
     <h2 class="txtAnimation">BOUNCE</h2>
-    <div class="menu">
+    <div class="startMenu">
         <a href="game.html">Play</a>
-        <a href="highScores.html">High Scores</a>
-    </div>
-    <div class="menu">
-        <div class="gameModifiers">
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-            </label>
-        </div>
+        <table id="highScoreTable" class="scoreTable"></table>
     </div>
 </body>
 </html>
