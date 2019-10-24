@@ -7,7 +7,7 @@ function displayScores() {
         var scoresObj = JSON.parse(localStorage.getItem("scores"));
 
     var txt = "";
-    var t = "<tr><th>Place</th><th>Name</th><th>Score</th><th>Date</th></tr>";
+    var t = "<tr><th> </th><th>Name</th><th>Score</th><th>Date</th></tr>";
     for (var i = 0; i < scoresObj.length; i++) {
         if (scoresObj[i]) {
             txt += "<tr><td>" + (i + 1) + "</td><td>" + scoresObj[i].name +

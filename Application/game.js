@@ -20,6 +20,7 @@ var balls = [];
 var canvas = document.getElementById("gameCanvas");
 var ctx = document.getElementById("gameCanvas").getContext('2d');
 var collisions = 0;
+var c;
 var ballCount;
 var speed;
 var countDown;
@@ -178,7 +179,6 @@ function shoot() {
         countDown = new Date().setSeconds(new Date().getSeconds() + 30);
         timr = countDown - new Date().getTime();
 
-        var c = document.getElementById("gameCanvas");
         if (startingvx == 0 && startingvy == 0) {
 
             var dx = myGameArea.canvas.width / 2  - 6 - (pointer.x);
@@ -257,7 +257,7 @@ function updateGame() {
         else
             times++;
 
-        var c = parseInt(collisions * (100 / ballCount));
+        c = parseInt(collisions * (100 / ballCount));
         document.getElementById("score").innerHTML = "Score: " + c;
         applyGravity();
         ballCollision();
@@ -278,25 +278,13 @@ function updateGame() {
 function gameOver() {
     myGameArea.clear();
     clearInterval(myGameArea.interval);
-    var orangeAlive = false;
-    for (b in balls) {
-        if ((!b.isBlue) && b.alive && b.started)
-            orangeAlive = true;
-    }
-
-    if (orangeAlive == true) {
-        collisions *= 1.5;
-        var c = parseInt(collisions * (100 / ballCount));
-        document.getElementById("score").innerHTML = "Score: " + c;
-    }
-    
-   
     /*
     * Fluency evidence: Updating the DOM, css styling with Javascrip
     */
     // Normalize our score!
-    var c = parseInt(collisions * (100 / ballCount));
-    collisions = c;
+    c = parseInt(collisions * (100 / ballCount));
+    console.log(c);
+
     scoresObj = getHighScores();
 
     if (scoresObj == null) {
@@ -431,7 +419,7 @@ n.addEventListener("keyup", function () {
 function addHighScores(name) {
     if (collisions > 0) {
         var d = new Date();
-        var newRecord = { "name" : name, "score" : collisions, "date" : (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear() };
+        var newRecord = { "name" : name, "score" : c, "date" : (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear() };
         if (scoresObj == null) {
             scoresObj = [];
             scoresObj.push(newRecord);

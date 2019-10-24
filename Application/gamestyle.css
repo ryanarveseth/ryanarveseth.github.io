@@ -32,13 +32,13 @@ h2 {
 
 .settings {
     width: 35px;
-    font-size: 35px;
+    font-size: 30px;
     height: 35px;
     text-align: center;
     color: white;
     font-weight: bolder;
     position: absolute;
-    top: -45px;
+    top: -40px;
     right: 0;
     border-radius: 50%;
 }
@@ -52,10 +52,28 @@ h2 {
     font-weight: bolder;
     position: absolute;
     top: -35px;
-    right: 33px;
+    right: 28px;
     border-radius: 50%;
 }
 .home:hover {
+    transition: .2s;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.restart {
+    width: 35px;
+    font-size: 35px;
+    height: 35px;
+    text-align: center;
+    color: white;
+    font-weight: bolder;
+    position: absolute;
+    top: -35px;
+    right: 55px;
+    border-radius: 50%;
+}
+.restart:hover {
     transition: .2s;
     transform: scale(1.1);
     cursor: pointer;
@@ -166,13 +184,25 @@ a:hover {
     font-size: 15px;
 }
 table.scoreTable {
+    font-size: 14px;
     border-collapse: collapse;
-    margin: 0 auto;
     position: relative;
     top: 25px;
+    border-radius: 10px;
 }
 table.scoreTable th, table.scoreTable td {
-    border-bottom: 1px solid #888888;
+    border-bottom: 1px solid #bbbbbb;
+    padding: 7px;
+}
+table.scoreTable th {
+    background: black;
+    padding: 5px;
+}
+
+table.scoreTable tr:hover {
+    transition: .3s;
+    background: #888888;
+    padding: 5px;
 }
 input
 .switch {
