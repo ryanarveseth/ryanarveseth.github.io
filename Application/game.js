@@ -103,7 +103,7 @@ var pointer =  {
 
 /*  Ball is an object (well, a Class FOR objects)
 * This Ball class allows us to create Ball objects...
-* We'll have an array of Balls in the game.
+* In this game, we'll have an array of Balls.
 * draw() : draws the ball on the screen
 * kill() : this is what causes a ball to 'disappear'
 * getSpeed() : returns the speed of the ball
@@ -120,7 +120,6 @@ class Ball {
         this.radius = rad;
         this.mass = 6;
         this.started = false;
-        this.hits = 10;
         this.isBlue = b;
     }
     kill() {
@@ -135,7 +134,6 @@ class Ball {
             this.vx *= -1;
         if (this.y + this.vy > myGameArea.canvas.height - 6) {
             this.vy *= -1;
-            //this.kill();
         }
         ctx.beginPath();
         ctx.fillStyle = this.isBlue == true ? "rgb(102, 153, 255)" : "rgb(240, 150, 0)";
@@ -290,19 +288,19 @@ function gameOver() {
     if (scoresObj == null) {
         if (collisions > 0) {
             document.getElementById("hScores").style.display = "block"; 
-            document.getElementById("hScores").focus();
+            document.getElementById("nickname").focus();
         }
     }
     else if (scoresObj.length < 5) {
         if (collisions > 0) { 
             document.getElementById("hScores").style.display = "block"; 
-            document.getElementById("hScores").focus();
+            document.getElementById("nickname").focus();
         }
     }
     else if (scoresObj[4].score < collisions) {
         if (collisions > 0) { 
             document.getElementById("hScores").style.display = "block"; 
-            document.getElementById("hScores").focus();
+            document.getElementById("nickname").focus();
         }
     }
     else {
@@ -435,8 +433,6 @@ function addHighScores(name) {
             }
 
         }
-            
-        console.log(scoresObj);
 
         if (scoresObj.length > 1) {
             scoresObj.sort((a, b) => (a.score < b.score) ? 1 : -1);

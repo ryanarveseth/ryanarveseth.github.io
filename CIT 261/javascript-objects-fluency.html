@@ -5,8 +5,71 @@
     <link rel="stylesheet" type="text/css" href="../index.css">
 </head>
 <body>
-<h1>Example of JavaScript Objects</h1>
+<h1 style="text-align:center;">JavaScript Objects</h1>
+<table>
+    <tr>
+        <td>
+            <table style='width:100%;'> 
+                <tr><th style='background:rgb(50,50,50);'>JavaScript Objects</th></tr>
+                <tr><td>Objects
+                    <ul>
+                        <li>Properties to objects are attributes</li>
+                        <ul>
+                            <li>properties can be anything, like color, mass, radius, etc.</li>
+                            <li class="notes">The example below has several properties: x, y, vx, vy, alive, radius, mass, started, and isBlue</li>
+                        </ul>
+                        <li>Object properties are accompanied by property values</li>
+                        <ul>
+                            <li>Object.property = value;</li>
+                              OR
+                            <li>Object["propertyName"] = value;</li>
+                            <li class="notes">In the example below, each property is defined with 'this.propertyName'</li>
+                        </ul>
+                        <li>Methods are functions within the object that accomplish a task.</li>
+                        <ul>
+                            <li>Object.method();</li>
+                            <li class="notes">In the example below, you can see the kill() & draw() methods.</li>
+                        </ul>
+                    </ul>
+                </td></tr>
+            </table>
+            <table style='width:100%;'> 
+                <tr><th style='background:rgb(50,50,50);'>JavaScript Obj. Example</th></tr>
 
-</body>
+                <tr>
+                    <td><img src="Pictures/javascript-object.PNG"></td>
+                </tr>
+
+            </table>
+        </td>
+    </tr>
+</table>
+<table style="width:400px;">
+    <tr>
+        <th colspan='7' style='background:rgb(245, 164, 13);'>Each ball is a Ball object!</th>
+    </tr>
+    <tr>
+        <td>
+            BOUNCE (Simple Game)
+            <ul>
+                <li>Balls are objects</li>
+                <li>The crosshair is an object as well</li>
+                <li>Rules
+                    <ul>
+                        <li>Get the largest number of points in 30 seconds!</li>
+                        <li>Any time 2 balls collide, you get points!</li>
+                        <li>If a blue ball hits an orange ball, the orange ball turns blue!</li>
+                        <li>If a blue ball hits another blue ball, one 'dies'</li>
+                    </ul>
+                </li>
+                <li>(Different ball collisions make different noises)</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td><iframe src="../Application/index.html" style="width:400px;height:600px;margin:0 auto;"></iframe></td>
+    </tr>
+</table>
 <a href="https://ryanarveseth.github.io" class="home">Go Home</a>
+</body>
 </html>

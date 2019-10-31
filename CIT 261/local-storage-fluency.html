@@ -2,11 +2,71 @@
 <html lang="en">
 <head>
     <title>Local Storage</title>
-    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="../index.css">
 </head>
 <body>
-<h1>Local Storage</h1>
-
-</body>
+<h1 style="text-align:center;">Local Storage</h1>
+<table>
+    <tr>
+        <td>
+            <table style='width:100%;'> 
+                <tr><th style='background:rgb(50,50,50);'>Local Storage</th></tr>
+                <tr><td>localStorage
+                    <ul>
+                        <li>localStorage.setItem("key", value)</li>
+                        <ul>
+                            <li>You can set localStorage keys of: properties, objects, etc.</li>
+                            <li class="notes">The example below stores an array of highscores in the "scores" key.</li>
+                            <li class="notes">The example below stores all of the user's set game modifiers, so they don't have to change them each time they start a game.</li>
+                        </ul>
+                        <li>localStorage.getItem("key")</li>
+                        <ul>
+                            <li>localStorage.getItem("scores")</li>
+                            <li>GetItem returns the value(s) corresponding to the property given.</li>
+                        </ul>
+                        <li>localStorage.removeItem("key")</li>
+                        <ul>
+                            <li>localStorage.remove("scores")</li>
+                            <li>This would erase all of the high scores!</li>
+                        </ul>
+                    </ul>
+                </td></tr>
+            </table>
+            <table style='width:100%;'> 
+                <tr><th style='background:rgb(50,50,50);'>Local Storage Example</th></tr>
+                <tr>
+                    <td><img src="Pictures/localstorage.PNG"></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<table style="width:400px;">
+    <tr>
+        <th colspan='7' style='background:rgb(245, 164, 13);'>This game uses localStorage for 2 things!</th>
+    </tr>
+    <tr>
+        <td>
+            BOUNCE (Simple Game)
+            <ul>
+                <li>Modifiers are stored in localStorage</li>
+                <li>High Scores are stored in localStorage as well!</li>
+                <li>Rules
+                    <ul>
+                        <li>Get the largest number of points in 30 seconds!</li>
+                        <li>Any time 2 balls collide, you get points!</li>
+                        <li>If a blue ball hits an orange ball, the orange ball turns blue!</li>
+                        <li>If a blue ball hits another blue ball, one 'dies'</li>
+                    </ul>
+                </li>
+                <li>(Different ball collisions make different noises)</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td><iframe src="../Application/index.html" style="width:400px;height:600px;margin:0 auto;"></iframe></td>
+    </tr>
+</table>
 <a href="https://ryanarveseth.github.io" class="home">Go Home</a>
+</body>
 </html>
