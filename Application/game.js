@@ -129,10 +129,10 @@ class Ball {
     draw() { 
         this.isBlue ? this.radius = 10 : this.radius = 6;
         if (this.y + this.vy < 6) {
-            this.vy = Math.abs(this.vy) * 1;
+            this.vy = Math.abs(this.vy);
         }
         if (this.x + this.vx < 0) {
-            this.vx = Math.abs(this.vx) * 1;
+            this.vx = Math.abs(this.vx);
         }
         if (this.x + this.vx > myGameArea.canvas.width) {
             this.vx = Math.abs(this.vx) * -1;
