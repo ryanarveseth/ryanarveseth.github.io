@@ -128,12 +128,18 @@ class Ball {
     }
     draw() { 
         this.isBlue ? this.radius = 10 : this.radius = 6;
-        if (this.y + this.vy < 6)
-            this.vy *= -1;
-        if (this.x + this.vx > myGameArea.canvas.width || this.x + this.vx < 0)
-            this.vx *= -1;
+        if (this.y + this.vy < 6) {
+            this.vy = Math.abs(this.vy) * 1;
+        }
+        if (this.x + this.vx < 0) {
+            this.vx = Math.abs(this.vx) * 1;
+        }
+        if (this.x + this.vx > myGameArea.canvas.width) {
+            this.vx = Math.abs(this.vx) * -1;
+        }
+            
         if (this.y + this.vy > myGameArea.canvas.height - 6) {
-            this.vy *= -1;
+            this.vy = Math.abs(this.vy) * -1;
         }
         ctx.beginPath();
         ctx.fillStyle = this.isBlue == true ? "rgb(102, 153, 255)" : "rgb(240, 150, 0)";
@@ -158,7 +164,6 @@ class Ball {
     }
     onGround() {
         var x = (this.y + this.radius >= canvas.height);
-        if (x == true && this.started) { this.y -= 20; } 
         return x;
     }
 }
