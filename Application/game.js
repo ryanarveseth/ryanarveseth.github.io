@@ -309,6 +309,7 @@ function gameOver() {
         }
     }
     else {
+        document.getElementsByClassName("gameOver").style.animation = "bounce .5s 3";
         document.getElementById("playAgain").style.display = "block";
     }
 }

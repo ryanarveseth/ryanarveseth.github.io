@@ -22,6 +22,19 @@ h2 {
     margin-bottom: 22px;
     text-align: center;
 }
+.gameOver {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(240,150,0);
+    font-size: 40px;
+    z-index: 0;
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 22px;
+    text-align: center;
+
+}
 
 
 
