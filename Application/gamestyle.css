@@ -11,16 +11,19 @@ h2 {
     color: rgb(240,150,0);
     font-size: 40px;
     z-index: 0;
-    /*   Here is our animation  */
-    animation: bounce 0.5s; 
-    animation-iteration-count: infinite;
-    animation-direction: alternate; 
-    /****************************/
     width: 400px;
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 22px;
     text-align: center;
+}
+
+.txtAnimation {
+    /*   Here is our animation  */
+    animation: bounce 0.5s; 
+    animation-iteration-count: infinite;
+    animation-direction: alternate; 
+    /****************************/
 }
 .gameOver {
     text-align: center;
@@ -33,7 +36,6 @@ h2 {
     margin-top: 20px;
     margin-bottom: 22px;
     text-align: center;
-
 }
 
 
