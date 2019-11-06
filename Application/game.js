@@ -286,7 +286,6 @@ function gameOver() {
     */
     // Normalize our score!
     c = parseInt(collisions * (100 / ballCount));
-    console.log(c);
 
     scoresObj = getHighScores();
 
@@ -389,7 +388,6 @@ function getHighScores() {
         return [];
     
     response = JSON.parse(localStorage.getItem("scores"));
-    console.log(response);
     return response;
 }
 
