@@ -313,6 +313,7 @@ function gameOver() {
         var gOver = document.getElementsByClassName("gameOver");
 
         [].slice.call(gOver).forEach(function (gOver) {
+            gOver.style.animationDirection = "alternate";
             gOver.style.animation = "bounce .5s 3";
         });
     }
@@ -455,6 +456,7 @@ function addHighScores(name) {
         var gOver = document.getElementsByClassName("gameOver");
 
         [].slice.call(gOver).forEach(function (gOver) {
+            gOver.style.animationDirection = "alternate";
             gOver.style.animation = "bounce .5s 3";
         });
     }
