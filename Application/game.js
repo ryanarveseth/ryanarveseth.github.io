@@ -447,6 +447,7 @@ function addHighScores(name) {
         document.getElementById("hScores").style.display = "none";
         // show the replay box
         document.getElementById("playAgain").style.display = "block";
+        document.getElementsByClassName("gameOver").style.animation = "bounce .3s 3";
     }
 }
 
