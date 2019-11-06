@@ -308,8 +308,13 @@ function gameOver() {
         }
     }
     else {
-        document.getElementsByClassName("gameOver").style.animation = "bounce .3s 3";
         document.getElementById("playAgain").style.display = "block";
+        
+        var gOver = document.getElementsByClassName("gameOver");
+
+        [].slice.call(gOver).forEach(function (gOver) {
+            gOver.style.animation = "bounce .3s 3";
+        });
     }
 }
 
@@ -447,7 +452,11 @@ function addHighScores(name) {
         document.getElementById("hScores").style.display = "none";
         // show the replay box
         document.getElementById("playAgain").style.display = "block";
-        document.getElementsByClassName("gameOver").style.animation = "bounce .3s 3";
+        var gOver = document.getElementsByClassName("gameOver");
+
+        [].slice.call(gOver).forEach(function (gOver) {
+            gOver.style.animation = "bounce .3s 3";
+        });
     }
 }
 
