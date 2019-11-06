@@ -309,11 +309,11 @@ function gameOver() {
     }
     else {
         document.getElementById("playAgain").style.display = "block";
-        
+
         var gOver = document.getElementsByClassName("gameOver");
 
         [].slice.call(gOver).forEach(function (gOver) {
-            gOver.style.animation = "bounce .3s 3";
+            gOver.style.animation = "bounce .5s 3";
         });
     }
 }
@@ -455,7 +455,7 @@ function addHighScores(name) {
         var gOver = document.getElementsByClassName("gameOver");
 
         [].slice.call(gOver).forEach(function (gOver) {
-            gOver.style.animation = "bounce .3s 3";
+            gOver.style.animation = "bounce .5s 3";
         });
     }
 }
