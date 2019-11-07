@@ -11,30 +11,19 @@
         <td>
             <table style='width:100%;'> 
                 <tr><th style='background:rgb(50,50,50);'>CSS Class Properties</th></tr>
-                <tr><td>Objects
+                <tr><td>Class Query
                     <ul>
-                        <li>Properties to objects are attributes</li>
+                        <li>first, getElementsByClassName</li>
                         <ul>
-                            <li>properties can be anything, like color, mass, radius, etc.</li>
-                            <li class="notes">The example below has several properties: x, y, vx, vy, alive, radius, mass, started, and isBlue</li>
-                        </ul>
-                        <li>Object properties are accompanied by property values</li>
-                        <ul>
-                            <li>Object.property = value;</li>
-                              OR
-                            <li>Object["propertyName"] = value;</li>
-                            <li class="notes">In the example below, each property is defined with 'this.propertyName'</li>
-                        </ul>
-                        <li>Methods are functions within the object that accomplish a task.</li>
-                        <ul>
-                            <li>Object.method();</li>
-                            <li class="notes">In the example below, you can see the kill() & draw() methods.</li>
+                            <li>[].slice.call() --- call each of the elements</li>
+                            <li>forEach(function (variable) --- run this function for each</li>
+                            <li>Then you can choose the class property (properties) you want to change</li>
                         </ul>
                     </ul>
                 </td></tr>
             </table>
             <table style='width:100%;'> 
-                <tr><th style='background:rgb(50,50,50);'>JavaScript Obj. Example</th></tr>
+                <tr><th style='background:rgb(50,50,50);'>CSS Class Properties</th></tr>
 
                 <tr>
                     <td><img src="Pictures/css-class.PNG"></td>
@@ -46,14 +35,12 @@
 </table>
 <table style="width:400px;">
     <tr>
-        <th colspan='7' style='background:rgb(245, 164, 13);'>Each ball is a Ball object!</th>
+        <th colspan='7' style='background:rgb(245, 164, 13);'>This game uses a class query for the Game Over header to add the bouncing animation when the 'Game Over' screen appears</th>
     </tr>
     <tr>
         <td>
             BOUNCE (Simple Game)
             <ul>
-                <li>Balls are objects</li>
-                <li>The crosshair is an object as well</li>
                 <li>Rules
                     <ul>
                         <li>Get the largest number of points in 30 seconds!</li>
