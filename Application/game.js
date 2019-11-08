@@ -195,7 +195,10 @@ function shoot() {
     }
 }   
 
-canvas.addEventListener("touchend", shoot, true);
+canvas.addEventListener("touchend", () => {
+    pointer.reposition(); 
+    shoot();
+}, true);
 canvas.addEventListener("click", shoot, true);
 
 // These two variables will space the balls out
