@@ -169,11 +169,11 @@ class Ball {
 }
 
 // touchstart, touchmove, and mousemove update the pointer's location
-canvas.addEventListener("touchstart", pointer.reposition, true);
-canvas.addEventListener("touchmove", pointer.reposition, true);
+//canvas.addEventListener("touchstart", pointer.reposition, true);
+//canvas.addEventListener("touchmove", pointer.reposition, true);
 canvas.addEventListener("mousemove", pointer.reposition, true);
 //canvas.ontouchstart = pointer.reposition();
-//canvas.ontouchmove = pointer.reposition();
+canvas.ontouchmove = pointer.reposition();
 var startingvx = 0;
 var startingvy = 0;
 
@@ -195,8 +195,8 @@ function shoot() {
     }
 }   
 
-canvas.addEventListener("touchend", shoot);
-canvas.addEventListener("click", shoot);
+canvas.addEventListener("touchend", shoot, true);
+canvas.addEventListener("click", shoot, true);
 
 // These two variables will space the balls out
 var iter = 1;
