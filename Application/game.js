@@ -87,12 +87,12 @@ var pointer =  {
     },
     reposition : function(e) {
 
-        //e.preventDefault();
+        e.preventDefault();
 
         var touchstart = e.type === 'touchstart' || e.type === 'touchmove',
             e = touchstart ? e.originalEvent : e,
-            pageX = touchstart ? e.changedTouches[0].pageX : e.pageX,
-            pageY = touchstart ? e.changedTouches[0].pageY : e.pageY;
+            pageX = touchstart ? e.touches[0].pageX : e.pageX,
+            pageY = touchstart ? e.touches[0].pageY : e.pageY;
 
             var rect = canvas.getBoundingClientRect();
             pointer.x = pageX - rect.left;
