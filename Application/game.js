@@ -91,8 +91,8 @@ var pointer =  {
 
         var touchstart = e.type === 'touchstart' || e.type === 'touchmove',
             e = touchstart ? e.originalEvent : e,
-            pageX = touchstart ? e.touches[0].clientX : e.pageX,
-            pageY = touchstart ? e.touches[0].clientY : e.pageY;
+            pageX = touchstart ? e.changedTouches[0].pageX : e.pageX,
+            pageY = touchstart ? e.changedTouches[0].pageY : e.pageY;
 
             var rect = canvas.getBoundingClientRect();
             pointer.x = pageX - rect.left;
