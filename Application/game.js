@@ -170,8 +170,8 @@ class Ball {
 
 // touchstart, touchmove, and mousemove update the pointer's location
 //canvas.addEventListener("touchstart", pointer.reposition, true);
-canvas.addEventListener("touchmove", pointer.reposition, true);
-canvas.addEventListener("mousemove", pointer.reposition, true);
+canvas.addEventListener("touchmove", pointer.reposition(), true);
+canvas.addEventListener("mousemove", pointer.reposition(), true);
 //canvas.ontouchstart = pointer.reposition();
 //canvas.ontouchmove = pointer.reposition();
 var startingvx = 0;
