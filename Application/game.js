@@ -87,7 +87,7 @@ var pointer =  {
     },
     reposition : function(e) {
 
-        e.preventDefault();
+        //e.preventDefault();
 
         var touchstart = e.type === 'touchstart' || e.type === 'touchmove',
             e = touchstart ? e.originalEvent : e,
