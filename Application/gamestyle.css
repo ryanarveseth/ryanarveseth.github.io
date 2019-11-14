@@ -410,3 +410,25 @@ body {
 .clearCanvas {
     background: rgba(0, 0, 0, 0);
 }
+.smallButton {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border: none;
+    letter-spacing: 2px;
+    text-shadow: none;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, .33);
+    padding: 10px;
+    width: 100%;
+    border-radius: 30px;
+    background: rgb(200, 100, 0);
+    font-size: 14px;
+    font-weight: bolder;
+    text-decoration: none;
+    color: white;
+}
+
+.smallButton:hover {
+    background: white;
+    color: rgb(0,0,0);
+    transition: .2s; 
+}
