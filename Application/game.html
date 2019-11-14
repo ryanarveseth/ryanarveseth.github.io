@@ -46,13 +46,9 @@
                             <th colspan="2" style="text-decoration: underline; font-size:20px;">Modifiers</th>
                         </tr>
                         <tr>
-                            <!--<td style="width:70%;"><label for="killer-blues">'Killer' Blues</label></td>
                             <td>
-                                <label class="switch">
-                                    <input type="checkbox" id="killer-blues" checked="checked">
-                                    <span class="slider round"></span>
-                                </label>
-                            </td>-->
+                                <button onclick="toggleBackground();">Toggle Background</button>
+                            </td>
                         </tr>
                         <tr>
                             <td colspan="2">
@@ -126,4 +122,12 @@
 </body>
 <script src="game.js"></script>
 <script src="animations.js"></script>
+<script>
+
+// This will toggle our gameCanvas with the clearCanvas Class! (toggle between clear and black)
+function toggleBackground() {
+    document.getElementById("gameCanvas").classList.toggle("clearCanvas");
+}
+
+</script>
 </html>
