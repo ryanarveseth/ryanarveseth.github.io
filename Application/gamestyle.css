@@ -433,14 +433,3 @@ body {
     transition: .2s; 
 }
 
-.bounceTransition {
-    transition: bounce 1s;
-}
-
-.bounceTransform {
-
-}
-
-.bounceAnimation {
-
-}
