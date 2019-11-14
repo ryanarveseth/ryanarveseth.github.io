@@ -302,7 +302,7 @@ button {
 button:hover {
     background: white;
     color: rgb(240,150,0);
-    transition: .2s; 
+    transition: .2s ease; 
 }
 
 /* Rounded sliders */
