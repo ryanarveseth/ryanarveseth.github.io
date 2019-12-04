@@ -394,11 +394,24 @@ function applyGravity() {
 * Fluency evidence: JSON
 */
 function getHighScores() {
+    /*
     if (localStorage.getItem("scores") == null)
         return [];
     
     response = JSON.parse(localStorage.getItem("scores"));
     return response;
+    */
+   var xmlhttp = new XMLHttpRequest();
+   xmlhttp.onreadystatechange = function() {
+       if (this.readyState == 4 && this.status == 200) {
+           return JSON.parse(this.responseText);
+       }
+   };
+       xmlhttp.open("GET", "getHighScores.php", true);
+       xmlhttp.send();
+
+
+
 }
 
 
@@ -430,6 +443,7 @@ n.addEventListener("keyup", function () {
 */
 function addHighScores(name) {
     if (collisions > 0) {
+
         var d = new Date();
         var newRecord = { "name" : name, "score" : c, "date" : (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear() };
         if (scoresObj == null) {
@@ -452,7 +466,22 @@ function addHighScores(name) {
             scoresObj.sort((a, b) => (a.score < b.score) ? 1 : -1);
         }
         
-        localStorage.setItem("scores", JSON.stringify(scoresObj));
+        scoresObj = JSON.stringify(scoresObj);
+
+        $.ajax({
+            type: "POST",
+            url: "setHighScores.php",
+            data: {data : scoresObj}, 
+            cache: false,
+        });
+
+
+
+
+
+        //localStorage.setItem("scores", JSON.stringify(scoresObj));
+
+
         // hide the name box
         document.getElementById("hScores").style.display = "none";
         // show the replay box
