@@ -394,13 +394,13 @@ function applyGravity() {
 * Fluency evidence: JSON
 */
 function getHighScores() {
-    /*
+    
     if (localStorage.getItem("scores") == null)
         return [];
     
     response = JSON.parse(localStorage.getItem("scores"));
     return response;
-    */
+    /*
    var xmlhttp = new XMLHttpRequest();
    xmlhttp.onreadystatechange = function() {
        if (this.readyState == 4 && this.status == 200) {
@@ -410,7 +410,7 @@ function getHighScores() {
        xmlhttp.open("GET", "getHighScores.php", true);
        xmlhttp.send();
 
-
+*/
 
 }
 
@@ -467,7 +467,7 @@ function addHighScores(name) {
         }
         
         scoresObj = JSON.stringify(scoresObj);
-
+/*
         $.ajax({
             type: "POST",
             url: "setHighScores.php",
@@ -475,11 +475,11 @@ function addHighScores(name) {
             cache: false,
         });
 
+*/
 
 
 
-
-        //localStorage.setItem("scores", JSON.stringify(scoresObj));
+        localStorage.setItem("scores", JSON.stringify(scoresObj));
 
 
         // hide the name box

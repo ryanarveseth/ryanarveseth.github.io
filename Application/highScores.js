@@ -1,6 +1,6 @@
 
 function displayScores() {
-
+/*
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -28,11 +28,8 @@ xmlhttp.onreadystatechange = function() {
     xmlhttp.open("GET", "getHighScores.php", true);
     xmlhttp.send();
 
+*/
 
-
-
-
-/*
     if (localStorage.getItem("scores") == null)
         var scoresObj = [];
     else
@@ -49,5 +46,5 @@ xmlhttp.onreadystatechange = function() {
     if (txt != "") { 
         document.getElementById("highScoreTable").innerHTML = t + txt;
     }
-    */
+    
 }
