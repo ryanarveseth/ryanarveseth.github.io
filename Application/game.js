@@ -467,26 +467,37 @@ function addHighScores(name) {
         }
         
         scoresObj = JSON.stringify(scoresObj);
-/*
-        $.ajax({
-            type: "POST",
-            url: "setHighScores.php",
-            data: {data : scoresObj}, 
-            cache: false,
-        });
-
-*/
-
-
 
         localStorage.setItem("scores", JSON.stringify(scoresObj));
-
 
         // hide the name box
         document.getElementById("hScores").style.display = "none";
         // show the replay box
         document.getElementById("playAgain").style.display = "block";
         var gOver = document.getElementsByClassName("gameOver");
+        
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+           var txtObj = json.parse(this.responseText);
+
+           var gmOver = document.getElementById("gameOverTaunt");
+           
+           for (var s = 0; s < txtObj.highScores.length; s++) {
+                if (c > txtObj[s].score) {
+                    gmOver.innerHTML = txtObj[s].level;
+                    break;
+                }
+           }
+          }
+        };
+        xhttp.open("GET", "gamedata.txt", true);
+        xhttp.send();
+
+        
+
+
 
         [].slice.call(gOver).forEach(function (gOver) {
             gOver.style.animationDirection = "alternate";
