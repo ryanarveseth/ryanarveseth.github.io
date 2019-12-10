@@ -324,7 +324,7 @@ function gameOver() {
                 console.log(txtObj);
                 var gmOver = document.getElementById("gameOverTaunt");
     
-                for (var s = 0; s < txtObj.highScores.length; s++) {
+                for (var s = 0; s < txtObj.length; s++) {
                     if (c > txtObj[s].score) {
                         gmOver.innerHTML = txtObj[s].level;
                         break;
