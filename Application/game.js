@@ -319,9 +319,7 @@ function gameOver() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText);
                 var txtObj = JSON.parse(this.responseText);
-                console.log(txtObj);
                 var gmOver = document.getElementById("gameOverTaunt");
     
                 for (var s = 0; s < txtObj.length; s++) {
