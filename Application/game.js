@@ -315,13 +315,13 @@ function gameOver() {
         document.getElementById("playAgain").style.display = "block";
 
         var gOver = document.getElementsByClassName("gameOver");
-        gOver.style.fontSize = "20px";
+        
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var txtObj = JSON.parse(this.responseText);
                 var gmOver = document.getElementById("gameOverTaunt");
-    
+                gmOver.style.fontSize = "20px";
                 for (var s = 0; s < txtObj.length; s++) {
                     if (c > txtObj[s].score) {
                         gmOver.innerHTML = txtObj[s].level;
