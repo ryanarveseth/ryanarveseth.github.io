@@ -7,9 +7,13 @@ var ballOut = document.getElementById("ballCount");
 var bSpeedSlide = document.getElementById("ballSpeedSlide");
 var bSpeedOut = document.getElementById("ballSpeed");
 
-gravOut.innerHTML = gravSlide.value;
-ballOut.innerHTML = ballSlide.value; 
+
+//var slider = document.getElementById("gravRange");
+//var output = document.getElementById("gravStrength");
+gravOut.innerHTML = gravSlide.value; // Display the default slider value
+ballOut.innerHTML = ballSlide.value; // Display the default slider value
 bSpeedOut.innerHTML = bSpeedSlide.value;
+//output.innerHTML = slider.value; // Display the default slider value
 
 // Update the current slider value (each time you drag the slider handle)
 gravSlide.oninput = function() {
@@ -25,10 +29,15 @@ bSpeedSlide.oninput = function() {
 }
 
 
-const openMods = () => {
+function openMods() {
     var x = document.getElementById("overlay");
 
-    if (localStorage.getItem("speed") !== null) {
+    if (localStorage.getItem("speed") === null) {
+        // SKIP
+    }
+    else {
+        // set blues to the local storage variable
+        //document.getElementById("killer-blues").checked = localStorage.getItem("blues") == "true" ? true : false;
         // Set the gravity amount
         document.getElementById("gravRange").value = localStorage.getItem("gravity");
         gravOut.innerHTML = localStorage.getItem("gravity");
@@ -40,14 +49,19 @@ const openMods = () => {
         bSpeedOut.innerHTML = localStorage.getItem("speed");
     }
        
+
     if (x.style.display === "none") {
+        
+    
         x.style.display = "block";
     }
     else 
        x.style.display = "none";
+
+
 }
 
-const submitMods = () => {
+function submitMods() {
     //var blues = document.getElementById("killer-blues").checked ? true : false;
     var gravity = document.getElementById("gravRange").value;
     var balls = document.getElementById("ballCountSlide").value;
@@ -60,6 +74,6 @@ const submitMods = () => {
     openMods();
 }
 
-const cancelMods = () => {
+function cancelMods() {
     document.getElementById("overlay").style.display = "none";
 }
