@@ -307,7 +307,7 @@ const gameOver = () => {
             if (this.readyState == 4 && this.status == 200) {
                 var txtObj = JSON.parse(this.responseText);
                 var gmOver = document.getElementById("gameOverTaunt");
-                gmOver.style.fontSize = "medium";
+                gmOver.style.fontSize = "large";
                 for (var s = 0; s < txtObj.length; s++) {
                     if (c > txtObj[s].score) {
                         gmOver.innerHTML = txtObj[s].level;
