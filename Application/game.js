@@ -1,17 +1,3 @@
-/* CIT 261 Fluencies Passed off in this project
- *  O - Javascript - Loops, Conditional Statements, Functions, Variables, Parameters, Arrays, Associative Arrays
- *  O - JavaScript Objects - Object creation functions, Inheritance, Properties, Methods, Instantiation
- *  O - JSON - Parse / Stringify
- *  X - AJAX - Requesting a JSON file
- *  O - Local Storage - API, Storing and retrieving Simple Data, Arrays, Associative Arrays, and Objects
- *  O - DOM Manipulation - Using createElement, appendChild, insertBefore, removeChild, etc.
- *  O - CSS Class Properties - Manipulating using JavaScript
- *  O - CSS3 Transitions and Animations - and triggering them with JavaScript
- *  O - JavaScript Events - Standard JS Events Including those for Mobile Devices (Ex. onTouchBegin, onLoad, etc) 
- *      and animation and transition events
- *  O - HTML5 Tags - Video, audio, and canvas
- *  X - CSS3 Transitions (1-3?)
- */
 
 var gravStrength;
 var blues = true;
@@ -27,8 +13,8 @@ var countDown;
 var timr;
 var scoresObj = []; 
 
-// this function grabs the local storage variables
-function setVariables() {
+// this grabs the local storage variables
+const setVariables = () => {
     if (localStorage.getItem("speed") === null) {
         //blues = document.getElementById("killer-blues").checked ? true : false;
         gravStrength = document.getElementById("gravRange").value;
@@ -44,17 +30,17 @@ function setVariables() {
 
 
 
-function game() {
+const game = () => {
     myGameArea.start();
 }
 
 var myGameArea = {
     canvas : document.getElementById("gameCanvas"),
-    start : function() {
+    start : () => {
         this.context = this.canvas.getContext("2d");
         this.interval = setInterval(updateGame, 20);
     },
-    clear : function() {
+    clear : () => {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 }
@@ -63,7 +49,7 @@ var myGameArea = {
 var pointer =  {
     x : 0,
     y : 0,
-    draw : function() {
+    draw : () => {
         // Reset the current path
         ctx.beginPath(); 
         // Left hash
@@ -85,7 +71,7 @@ var pointer =  {
         // Make the line visible
         ctx.stroke();
     },
-    reposition : function(e) {
+    reposition : (e) => {
 
         e.preventDefault();
 
@@ -177,7 +163,7 @@ canvas.addEventListener("mousemove", pointer.reposition, true);
 var startingvx = 0;
 var startingvy = 0;
 
-function shoot() {
+const shoot = () => {
     if (startingvx == 0 && startingvy == 0) {
         setVariables();
         countDown = new Date().setSeconds(new Date().getSeconds() + 30);
@@ -206,7 +192,7 @@ var iter = 1;
 var times = 0;
 
 // Set a 30 second timer (once the balls have been shot)
-function updateGame() { 
+const updateGame = () => { 
     myGameArea.clear();
     if (countDown == null) 
         timr = 30000;
@@ -282,7 +268,7 @@ function updateGame() {
 * clear the interval, so it stops refreshing at x_fps
 * if there are no orange balls, 
 */
-function gameOver() {
+const gameOver = () => {
     myGameArea.clear();
     clearInterval(myGameArea.interval);
     /*
@@ -317,7 +303,7 @@ function gameOver() {
         var gOver = document.getElementsByClassName("gameOver");
         
         var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
+        xhttp.onreadystatechange = () => {
             if (this.readyState == 4 && this.status == 200) {
                 var txtObj = JSON.parse(this.responseText);
                 var gmOver = document.getElementById("gameOverTaunt");
@@ -335,15 +321,15 @@ function gameOver() {
 
 
 
-        [].slice.call(gOver).forEach(function (gOver) {
+        [].slice.call(gOver).forEach((gOver) => {
             gOver.style.animationDirection = "alternate";
             gOver.style.animation = "bounce .5s 3";
         });
     }
 }
 
-/* This function handles ball collisions and sounds! */ 
-function ballCollision() {
+/* This handles ball collisions and sounds! */ 
+const ballCollision = () => {
     for (var i = 0; i < balls.length; i++) {
         if (balls[i].alive)
             for (var x = 0; x < balls.length; x++) {
@@ -399,7 +385,7 @@ function ballCollision() {
 /*
 * Fluency evidence: Javascript Loops, arrays
 */
-function applyGravity() {
+const applyGravity = () => {
     for (var b in balls) {
         if (balls[b].onGround() == false) {
             balls[b].vy += 0.01 * gravStrength;
@@ -412,30 +398,18 @@ function applyGravity() {
 /*
 * Fluency evidence: JSON
 */
-function getHighScores() {
+const getHighScores = () => {
     
     if (localStorage.getItem("scores") == null)
         return [];
     
     response = JSON.parse(localStorage.getItem("scores"));
     return response;
-    /*
-   var xmlhttp = new XMLHttpRequest();
-   xmlhttp.onreadystatechange = function() {
-       if (this.readyState == 4 && this.status == 200) {
-           return JSON.parse(this.responseText);
-       }
-   };
-       xmlhttp.open("GET", "getHighScores.php", true);
-       xmlhttp.send();
-
-*/
-
 }
 
 
 /*
-* Here is our example of the create / replace child.
+* Here is an example of the create / replace child.
 * The user has to type in a name to submit their high score. 
 */
 var n = document.getElementById("nickname");    
@@ -443,14 +417,14 @@ var n = document.getElementById("nickname");
 /* Adds an event listener to the nickname inputbox (displays the button!)
  * Fluencies: DOM Manipulation
  */
-n.addEventListener("keyup", function () {
+n.addEventListener("keyup", () => {
     document.getElementById("remainingChars").innerHTML = 8 - n.value.length;
     // create a new button to submit our name!
     var replaced = document.getElementById("buttonSubmit");
     var button = document.createElement('button');
     button.innerText = 'Enter';
     button.id = "buttonSubmit";
-    button.onclick = function() { 
+    button.onclick = () => { 
         addHighScores(n.value);
     }
     replaced.parentNode.replaceChild(button, replaced);
@@ -460,7 +434,7 @@ n.addEventListener("keyup", function () {
 /* Adds your high score to the list of high scores! 
 * Fluencies : JavaScript Objects, JavaScript, DOM Manipulation
 */
-function addHighScores(name) {
+const addHighScores = (name) => {
     if (collisions > 0) {
 
         var d = new Date();
@@ -495,13 +469,13 @@ function addHighScores(name) {
         document.getElementById("playAgain").style.display = "block";
         var gOver = document.getElementsByClassName("gameOver");
 
-        [].slice.call(gOver).forEach(function (gOver) {
+        [].slice.call(gOver).forEach((gOver) => {
             gOver.style.animationDirection = "alternate";
             gOver.style.animation = "bounce .5s 3";
         });
     }
 }
 
-function distanceNextFrame(a, b) {
+const distanceNextFrame = (a, b) => {
     return Math.sqrt((a.x + a.vx - b.x - b.vx)**2 + (a.y + a.vy - b.y - b.vy)**2) - a.radius - b.radius;
 }

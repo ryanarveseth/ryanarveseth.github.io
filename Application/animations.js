@@ -7,13 +7,9 @@ var ballOut = document.getElementById("ballCount");
 var bSpeedSlide = document.getElementById("ballSpeedSlide");
 var bSpeedOut = document.getElementById("ballSpeed");
 
-
-//var slider = document.getElementById("gravRange");
-//var output = document.getElementById("gravStrength");
-gravOut.innerHTML = gravSlide.value; // Display the default slider value
-ballOut.innerHTML = ballSlide.value; // Display the default slider value
+gravOut.innerHTML = gravSlide.value;
+ballOut.innerHTML = ballSlide.value; 
 bSpeedOut.innerHTML = bSpeedSlide.value;
-//output.innerHTML = slider.value; // Display the default slider value
 
 // Update the current slider value (each time you drag the slider handle)
 gravSlide.oninput = function() {
@@ -29,15 +25,10 @@ bSpeedSlide.oninput = function() {
 }
 
 
-function openMods() {
+const openMods = () => {
     var x = document.getElementById("overlay");
 
-    if (localStorage.getItem("speed") === null) {
-        // SKIP
-    }
-    else {
-        // set blues to the local storage variable
-        //document.getElementById("killer-blues").checked = localStorage.getItem("blues") == "true" ? true : false;
+    if (localStorage.getItem("speed") !== null) {
         // Set the gravity amount
         document.getElementById("gravRange").value = localStorage.getItem("gravity");
         gravOut.innerHTML = localStorage.getItem("gravity");
@@ -49,19 +40,14 @@ function openMods() {
         bSpeedOut.innerHTML = localStorage.getItem("speed");
     }
        
-
     if (x.style.display === "none") {
-        
-    
         x.style.display = "block";
     }
     else 
        x.style.display = "none";
-
-
 }
 
-function submitMods() {
+const submitMods = () => {
     //var blues = document.getElementById("killer-blues").checked ? true : false;
     var gravity = document.getElementById("gravRange").value;
     var balls = document.getElementById("ballCountSlide").value;
@@ -74,6 +60,6 @@ function submitMods() {
     openMods();
 }
 
-function cancelMods() {
+const cancelMods = () => {
     document.getElementById("overlay").style.display = "none";
 }
